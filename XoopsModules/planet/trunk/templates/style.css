@@ -1,0 +1,75 @@
+/*
+<!-- phppp (D.J.): http://xoopsforge.com; http://xoops.org.cn -->
+*/
+
+
+#page_header {
+	padding: 20px 5px;
+}
+#page_header div.title{
+	background: transparent !important;
+	padding-bottom: 20px;
+}
+#page_header div.title a, #page_header div.title{
+	font-size: 18px;
+	font-weight: bold;
+	padding: 5px 0px;
+	border: 0px;
+}
+
+#page_footer {
+	padding: 5px;
+}
+
+/*
+.title{
+	line-height: 150%;
+	font-weight: bold;
+	line-height: 150%;
+	margin: 10px 0px 10px 0px;
+	background: #eee;
+}
+
+div.title a{
+	font-weight: bold;
+}
+*/
+
+div.image{
+	float: right;
+	text-align: center;
+	font-size: small; /* caption */
+	margin: 0px 10px 0px 0px;
+}
+
+#pagenav, #copyright {
+	float: right;
+	text-align: right;
+	padding: 5px;
+	margin: 20px 10px;
+	border-top: 1px solid #888;
+}
+
+div.sibling{
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+
+div.sibling span.previous{
+	float: left;
+}
+div.sibling span.next{
+	float: right;
+}
+
+span.copytext{
+	padding: 1px 2px;
+	font-family: Arial;
+	cursor: pointer;
+	cursor: hand;
+}
+
+acronym {
+  cursor: help;
+  border-bottom: 1px dotted #000;
+}
