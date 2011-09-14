@@ -31,7 +31,7 @@ CREATE TABLE `planet_article` (
   PRIMARY KEY  		(`art_id`),
   KEY `blog_id` 	(`blog_id`),
   KEY `art_title` 	(`art_title`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 ## --------------------------------------------------------
 
@@ -59,7 +59,7 @@ CREATE TABLE `planet_blog` (
   PRIMARY KEY  		(`blog_id`),
   KEY `blog_title` 	(`blog_title`),
   KEY `blog_feed` 	(`blog_feed`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 ## --------------------------------------------------------
 
@@ -73,7 +73,7 @@ CREATE TABLE `planet_blogcat` (
   `cat_id` 			int(11) 		unsigned NOT NULL default '0',
   PRIMARY KEY  		(`bc_id`),
   KEY `art_id` 		(`blog_id`,`cat_id`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 ## --------------------------------------------------------
 
@@ -88,7 +88,7 @@ CREATE TABLE `planet_bookmark` (
   PRIMARY KEY  		(`bm_id`),
   KEY `blog_id` 	(`blog_id`),
   KEY `bm_uid` 		(`bm_uid`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 ## --------------------------------------------------------
 
@@ -102,7 +102,7 @@ CREATE TABLE `planet_category` (
   `cat_order` 		mediumint(4) 	unsigned NOT NULL default '1',
   PRIMARY KEY  		(`cat_id`),
   KEY `cat_title` 	(`cat_title`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 ## --------------------------------------------------------
 
@@ -121,4 +121,4 @@ CREATE TABLE `planet_rate` (
   PRIMARY KEY  		(`rate_id`),
   KEY `art_id` 		(`art_id`),
   KEY `blog_id` 	(`blog_id`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
