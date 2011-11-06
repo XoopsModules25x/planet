@@ -1,5 +1,5 @@
 <?php
-// $Id: feedcreator.class.php,v 1.1.1.1 2005/11/14 00:33:47 phppp Exp $
+// $Id$
 // ------------------------------------------------------------------------ //
 // This program is free software; you can redistribute it and/or modify     //
 // it under the terms of the GNU General Public License as published by     //
