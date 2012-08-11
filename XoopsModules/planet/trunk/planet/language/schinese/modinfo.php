@@ -13,111 +13,111 @@ include XOOPS_ROOT_PATH."/modules/".$url_arr[2]."/include/vars.php";
 
 if(defined($GLOBALS["VAR_PREFIXU"]."_LANG_EN_MODINFO")) return; define($GLOBALS["VAR_PREFIXU"]."_LANG_EN_MODINFO",1);
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_NAME","ÌìÏÂ²©ÀÀ");
+define($GLOBALS["VAR_PREFIXU"]."_MI_NAME","ï¿½ï¿½ï¿½Â²ï¿½ï¿½ï¿½");
 define($GLOBALS["VAR_PREFIXU"]."_MI_DESC","XML feeds");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_PAGE_INDEX", "Ê×Ò³");
-define($GLOBALS["VAR_PREFIXU"]."_MI_PAGE_ARTICLE", "ÎÄÕÂ");
-define($GLOBALS["VAR_PREFIXU"]."_MI_PAGE_ARCHIVE", "´æµµ");
-define($GLOBALS["VAR_PREFIXU"]."_MI_PAGE_LIST", "ÁÐ±í");
+define($GLOBALS["VAR_PREFIXU"]."_MI_PAGE_INDEX","ï¿½ï¿½Ò³");
+define($GLOBALS["VAR_PREFIXU"]."_MI_PAGE_ARTICLE","ï¿½ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_PAGE_ARCHIVE","ï¿½æµµ");
+define($GLOBALS["VAR_PREFIXU"]."_MI_PAGE_LIST","ï¿½Ð±ï¿½");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_SUBMIT","Ìá½»");
-define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLE","ÎÄÕÂ");
+define($GLOBALS["VAR_PREFIXU"]."_MI_SUBMIT","ï¿½á½»");
+define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLE","ï¿½ï¿½ï¿½ï¿½");
 define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLE_DESC","");
-define($GLOBALS["VAR_PREFIXU"]."_MI_CATEGORY","Àà±ð");
+define($GLOBALS["VAR_PREFIXU"]."_MI_CATEGORY","ï¿½ï¿½ï¿½");
 define($GLOBALS["VAR_PREFIXU"]."_MI_CATEGORY_DESC","");
-define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG","Blog (ÍøÕ¾)");
+define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG","Blog (ï¿½ï¿½Õ¾)");
 define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_DESC","");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_THEMESET", "·ç¸ñ");
-define($GLOBALS["VAR_PREFIXU"]."_MI_THEMESET_DESC", "Ó¦ÓÃÓÚÕû¸öÄ£¿é, Èç¹û²»²ÉÓÃ£¬Ñ¡Ôñ '"._NONE."'");
+define($GLOBALS["VAR_PREFIXU"]."_MI_THEMESET","ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_THEMESET_DESC","Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½Ñ¡ï¿½ï¿½ '"._NONE."'");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_TIMEFORMAT","Ê±¼äÏÔÊ¾¸ñÊ½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_TIMEFORMAT","Ê±ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ê½");
 define($GLOBALS["VAR_PREFIXU"]."_MI_TIMEFORMAT_DESC","");
-define($GLOBALS["VAR_PREFIXU"]."_MI_TIMEFORMAT_CUSTOM","¶¨ÖÆ");
+define($GLOBALS["VAR_PREFIXU"]."_MI_TIMEFORMAT_CUSTOM","ï¿½ï¿½ï¿½ï¿½");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_DISPLAY_SUMMARY", "ÔÚÎÄÕÂÁÐ±íÒ³ÃæÏÔÊ¾µÄÕªÒª³¤¶È");
-define($GLOBALS["VAR_PREFIXU"]."_MI_DISPLAY_SUMMARY_DESC", "0 - ÏÔÊ¾È«ÎÄ");
+define($GLOBALS["VAR_PREFIXU"]."_MI_DISPLAY_SUMMARY","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ÕªÒªï¿½ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_DISPLAY_SUMMARY_DESC","0 - ï¿½ï¿½Ê¾È«ï¿½ï¿½");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_DODEBUG","ÆôÓÃµ÷ÊÔÄ£Ê½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_DODEBUG","ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½Ä£Ê½");
 define($GLOBALS["VAR_PREFIXU"]."_MI_DODEBUG_DESC","");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_DOURLREWRITE","ÆôÓÃurlÖØÐ´»úÖÆ");
-define($GLOBALS["VAR_PREFIXU"]."_MI_DOURLREWRITE_DESC","ÐèÒªÆôÓÃ AcceptPathInfo (Apache2)");
+define($GLOBALS["VAR_PREFIXU"]."_MI_DOURLREWRITE","ï¿½ï¿½ï¿½ï¿½urlï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_DOURLREWRITE_DESC","ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ AcceptPathInfo (Apache2)");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_DOSIBLING","ÏÔÊ¾ÉÏÒ»Æª/ÏÂÒ»Æª");
+define($GLOBALS["VAR_PREFIXU"]."_MI_DOSIBLING","ï¿½ï¿½Ê¾ï¿½ï¿½Ò»Æª/ï¿½ï¿½Ò»Æª");
 define($GLOBALS["VAR_PREFIXU"]."_MI_DOSIBLING_DESC","");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLESPERPAGE","Ã¿Ò³ÏÔÊ¾ÎÄÕÂÊý");
+define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLESPERPAGE","Ã¿Ò³ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLESPERPAGE_DESC","");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_LISTPERPAGE","Ã¿Ò³ÏÔÊ¾ÁÐ±íÊý");
+define($GLOBALS["VAR_PREFIXU"]."_MI_LISTPERPAGE","Ã¿Ò³ï¿½ï¿½Ê¾ï¿½Ð±ï¿½ï¿½ï¿½");
 define($GLOBALS["VAR_PREFIXU"]."_MI_LISTPERPAGE_DESC","");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_BLOGSPERUPDATE","Ã¿´Î¸üÐÂµÄBlog»òÍøÕ¾");
+define($GLOBALS["VAR_PREFIXU"]."_MI_BLOGSPERUPDATE","Ã¿ï¿½Î¸ï¿½ï¿½Âµï¿½Blogï¿½ï¿½ï¿½ï¿½Õ¾");
 define($GLOBALS["VAR_PREFIXU"]."_MI_BLOGSPERUPDATE_DESC","");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLE_EXPIRE","ÎÄÕÂ¹ýÆÚÊ±¼ä");
-define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLE_EXPIRE_DESC","µ¥Î»£ºÌì");
+define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLE_EXPIRE","ï¿½ï¿½ï¿½Â¹ï¿½ï¿½ï¿½Ê±ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLE_EXPIRE_DESC","ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_COPYRIGHT","°æÈ¨");
+define($GLOBALS["VAR_PREFIXU"]."_MI_COPYRIGHT","ï¿½ï¿½È¨");
 define($GLOBALS["VAR_PREFIXU"]."_MI_COPYRIGHT_DESC","");
 
 define($GLOBALS["VAR_PREFIXU"]."_MI_PING","Pings");
-define($GLOBALS["VAR_PREFIXU"]."_MI_PING_DESC","ÒªPINGµÄÍøÖ·");
+define($GLOBALS["VAR_PREFIXU"]."_MI_PING_DESC","ÒªPINGï¿½ï¿½ï¿½ï¿½Ö·");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_TRACKBACK_OPTION","ÊÕÈ¡TrackbackµÄÑ¡Ïî");
+define($GLOBALS["VAR_PREFIXU"]."_MI_TRACKBACK_OPTION","ï¿½ï¿½È¡Trackbackï¿½ï¿½Ñ¡ï¿½ï¿½");
 define($GLOBALS["VAR_PREFIXU"]."_MI_TRACKBACK_OPTION_DESC","");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_MODERATION","ÐèÒª¹ÜÀíÔ±ÉóºË");
-define($GLOBALS["VAR_PREFIXU"]."_MI_MEMBER","»áÔ±¿É×Ô¶¯Í¨¹ý");
+define($GLOBALS["VAR_PREFIXU"]."_MI_MODERATION","ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_MEMBER","ï¿½ï¿½Ô±ï¿½ï¿½ï¿½Ô¶ï¿½Í¨ï¿½ï¿½");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_NEWBLOG_SUBMIT","Ìá½»ÐÂBlog»òÍøÕ¾µÄÈ¨ÏÞ");
+define($GLOBALS["VAR_PREFIXU"]."_MI_NEWBLOG_SUBMIT","ï¿½á½»ï¿½ï¿½Blogï¿½ï¿½ï¿½ï¿½Õ¾ï¿½ï¿½È¨ï¿½ï¿½");
 define($GLOBALS["VAR_PREFIXU"]."_MI_NEWBLOG_SUBMIT_DESC","");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_ANONYMOUSRATE","ÔÊÐíÓÎ¿ÍÆÀ·Ö");
+define($GLOBALS["VAR_PREFIXU"]."_MI_ANONYMOUSRATE","ï¿½ï¿½ï¿½ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ï¿½ï¿½");
 define($GLOBALS["VAR_PREFIXU"]."_MI_ANONYMOUSRATE_DESC","");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_PSEUDOCRON","ÐéÄâcron");
-define($GLOBALS["VAR_PREFIXU"]."_MI_PSEUDOCRON_DESC","ÓÃ»§·ÃÎÊÄ£¿éÊ±×Ô¶¯´¥·¢blogµÄ¸üÐÂ");
+define($GLOBALS["VAR_PREFIXU"]."_MI_PSEUDOCRON","ï¿½ï¿½ï¿½ï¿½cron");
+define($GLOBALS["VAR_PREFIXU"]."_MI_PSEUDOCRON_DESC","ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½Ê±ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½blogï¿½Ä¸ï¿½ï¿½ï¿½");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_ADMENU_INDEX","Ê×Ò³");
-define($GLOBALS["VAR_PREFIXU"]."_MI_ADMENU_CATEGORY","Àà±ð¹ÜÀí");
-define($GLOBALS["VAR_PREFIXU"]."_MI_ADMENU_BLOG","Blog»òÍøÕ¾");
-define($GLOBALS["VAR_PREFIXU"]."_MI_ADMENU_ARTICLE","ÎÄÕÂ");
-define($GLOBALS["VAR_PREFIXU"]."_MI_ADMENU_BLOCK","Çø¿é");
-define($GLOBALS["VAR_PREFIXU"]."_MI_ADMENU_ABOUT","¹ØÓÚ");
+define($GLOBALS["VAR_PREFIXU"]."_MI_ADMENU_INDEX","ï¿½ï¿½Ò³");
+define($GLOBALS["VAR_PREFIXU"]."_MI_ADMENU_CATEGORY","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_ADMENU_BLOG","Blogï¿½ï¿½ï¿½ï¿½Õ¾");
+define($GLOBALS["VAR_PREFIXU"]."_MI_ADMENU_ARTICLE","ï¿½ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_ADMENU_BLOCK","ï¿½ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_ADMENU_ABOUT","ï¿½ï¿½ï¿½ï¿½");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_NOTIFY", "È«¾Ö");
-define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_NOTIFYDSC", "È«¾ÖÍ¨ÖªÑ¡Ïî");
-define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_NOTIFY", "Blog");
-define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_NOTIFYDSC", "Blog Í¨ÖªÑ¡Ïî");
-define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLE_NOTIFY", "ÎÄÕÂ");
-define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLE_NOTIFYDSC", "ÎÄÕÂÍ¨ÖªÑ¡Ïî");
-define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_BLOGSUBMIT_NOTIFY", "ÎÄÕÂÌá½»");
-define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_BLOGSUBMIT_NOTIFYCAP", "ÓÐµÈ´ýÉóºËµÄBlogÊ±Í¨ÖªÎÒ");
-define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_BLOGSUBMIT_NOTIFYDSC", "µ±ÓÐÐÂblogÌá½»Ê±Í¨ÖªÎÒ");
-define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_BLOGSUBMIT_NOTIFYSBJ", "[{X_SITENAME}] {X_MODULE} ×Ô¶¯Í¨Öª : ÐÂBlogÌá½»");
-define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_NEWBLOG_NOTIFY", "ÐÂBlog");
-define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_NEWBLOG_NOTIFYCAP", "ÓÐBlog·¢²¼Ê±Í¨ÖªÎÒ");
-define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_NEWBLOG_NOTIFYDSC", "Èç¹ûÓÐÐÂBlog·¢²¼£¬Í¨ÖªÎÒ");
-define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_NEWBLOG_NOTIFYSBJ", "[{X_SITENAME}] {X_MODULE} ×Ô¶¯Í¨Öª : ÐÂBlog·¢²¼");
-define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_ARTICLEMONITOR_NOTIFY", "ÎÄÕÂ¼àÊÓ");
-define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_ARTICLEMONITOR_NOTIFYCAP", "Í¨ÖªÎÒÓÐ¹ØÎÒÈÎÒ»ÎÄÕÂµÄ±ä»¯");
-define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_ARTICLEMONITOR_NOTIFYDSC", "Èç¹ûÎÒµÄÈÎÒ»ÆªÓÐ±ä»¯Í¨ÖªÎÒ");
-define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_ARTICLEMONITOR_NOTIFYSBJ", "[{X_SITENAME}] {X_MODULE} ×Ô¶¯Í¨Öª : ¸üÐÂ");
+define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_NOTIFY","È«ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_NOTIFYDSC","È«ï¿½ï¿½Í¨ÖªÑ¡ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_NOTIFY","Blog");
+define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_NOTIFYDSC","Blog Í¨ÖªÑ¡ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLE_NOTIFY","ï¿½ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLE_NOTIFYDSC","ï¿½ï¿½ï¿½ï¿½Í¨ÖªÑ¡ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_BLOGSUBMIT_NOTIFY","ï¿½ï¿½ï¿½ï¿½ï¿½á½»");
+define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_BLOGSUBMIT_NOTIFYCAP","ï¿½ÐµÈ´ï¿½ï¿½ï¿½Ëµï¿½BlogÊ±Í¨Öªï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_BLOGSUBMIT_NOTIFYDSC","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½blogï¿½á½»Ê±Í¨Öªï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_BLOGSUBMIT_NOTIFYSBJ","[{X_SITENAME}] {X_MODULE} ï¿½Ô¶ï¿½Í¨Öª : ï¿½ï¿½Blogï¿½á½»");
+define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_NEWBLOG_NOTIFY","ï¿½ï¿½Blog");
+define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_NEWBLOG_NOTIFYCAP","ï¿½ï¿½Blogï¿½ï¿½ï¿½ï¿½Ê±Í¨Öªï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_NEWBLOG_NOTIFYDSC","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Blogï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨Öªï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_NEWBLOG_NOTIFYSBJ","[{X_SITENAME}] {X_MODULE} ï¿½Ô¶ï¿½Í¨Öª : ï¿½ï¿½Blogï¿½ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_ARTICLEMONITOR_NOTIFY","ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_ARTICLEMONITOR_NOTIFYCAP","Í¨Öªï¿½ï¿½ï¿½Ð¹ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ÂµÄ±ä»¯");
+define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_ARTICLEMONITOR_NOTIFYDSC","ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ò»Æªï¿½Ð±ä»¯Í¨Öªï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_GLOBAL_ARTICLEMONITOR_NOTIFYSBJ","[{X_SITENAME}] {X_MODULE} ï¿½Ô¶ï¿½Í¨Öª : ï¿½ï¿½ï¿½ï¿½");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_BLOGAPPROVE_NOTIFY", "BlogÍ¨¹ýÉóºË");
-define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_BLOGAPPROVE_NOTIFYCAP", "Í¨¹ýÉóºËÍ¨Öª");
-define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_BLOGAPPROVE_NOTIFYDSC", "Èç¹ûÕâ¸öBlogÍ¨¹ýÉóºË£¬Í¨ÖªÎÒ");
-define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_BLOGAPPROVE_NOTIFYSBJ", "[{X_SITENAME}] {X_MODULE} ×Ô¶¯Í¨Öª : blog Í¨¹ýÉóºË");
-define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_BLOGUPDATE_NOTIFY", "Blog ¸üÐÂ");
-define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_BLOGUPDATE_NOTIFYCAP", "¸üÐÂÍ¨Öª");
-define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_BLOGUPDATE_NOTIFYDSC", "Èç¹û¸ÃBlogÓÐ¸üÐÂ£¬Í¨ÖªÎÒ");
-define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_BLOGUPDATE_NOTIFYSBJ", "[{X_SITENAME}] {X_MODULE} ×Ô¶¯Í¨Öª : blog ÒÑ¸üÐÂ");
+define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_BLOGAPPROVE_NOTIFY","BlogÍ¨ï¿½ï¿½ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_BLOGAPPROVE_NOTIFYCAP","Í¨ï¿½ï¿½ï¿½ï¿½ï¿½Í¨Öª");
+define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_BLOGAPPROVE_NOTIFYDSC","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BlogÍ¨ï¿½ï¿½ï¿½ï¿½Ë£ï¿½Í¨Öªï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_BLOGAPPROVE_NOTIFYSBJ","[{X_SITENAME}] {X_MODULE} ï¿½Ô¶ï¿½Í¨Öª : blog Í¨ï¿½ï¿½ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_BLOGUPDATE_NOTIFY","Blog ï¿½ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_BLOGUPDATE_NOTIFYCAP","ï¿½ï¿½ï¿½ï¿½Í¨Öª");
+define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_BLOGUPDATE_NOTIFYDSC","ï¿½ï¿½ï¿½ï¿½ï¿½Blogï¿½Ð¸ï¿½ï¿½Â£ï¿½Í¨Öªï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_BLOG_BLOGUPDATE_NOTIFYSBJ","[{X_SITENAME}] {X_MODULE} ï¿½Ô¶ï¿½Í¨Öª : blog ï¿½Ñ¸ï¿½ï¿½ï¿½");
 
-define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLE_ARTICLEMONITOR_NOTIFY", "ÎÄÕÂ¼àÊÓ");
-define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLE_ARTICLEMONITOR_NOTIFYCAP", "ÎÄÕÂ±ä¶¯Í¨Öª");
-define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLE_ARTICLEMONITOR_NOTIFYDSC", "Èç¹û¸ÃÎÄÕÂÓÐ¸üÐÂ£¬Í¨ÖªÎÒ");
-define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLE_ARTICLEMONITOR_NOTIFYSBJ", "[{X_SITENAME}] {X_MODULE} ×Ô¶¯Í¨Öª : ÎÄÕÂÒÑ¸üÐÂ");
+define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLE_ARTICLEMONITOR_NOTIFY","ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLE_ARTICLEMONITOR_NOTIFYCAP","ï¿½ï¿½ï¿½Â±ä¶¯Í¨Öª");
+define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLE_ARTICLEMONITOR_NOTIFYDSC","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½ï¿½Â£ï¿½Í¨Öªï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_MI_ARTICLE_ARTICLEMONITOR_NOTIFYSBJ","[{X_SITENAME}] {X_MODULE} ï¿½Ô¶ï¿½Í¨Öª : ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¸ï¿½ï¿½ï¿½");
 ?>

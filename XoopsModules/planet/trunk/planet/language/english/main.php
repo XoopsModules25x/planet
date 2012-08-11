@@ -82,13 +82,13 @@ define($GLOBALS["VAR_PREFIXU"]."_MD_SUBMITTER","Submitter");
 define($GLOBALS["VAR_PREFIXU"]."_MD_VIEWS","Views");
 define($GLOBALS["VAR_PREFIXU"]."_MD_RATE","Rate");
 define($GLOBALS["VAR_PREFIXU"]."_MD_RATEIT","Rate it!");
-define($GLOBALS["VAR_PREFIXU"]."_MD_TIME", "Time");
+define($GLOBALS["VAR_PREFIXU"]."_MD_TIME","Time");
 
-define($GLOBALS["VAR_PREFIXU"]."_MD_UPDATED", "The blog is updated with %s articles inserted");
-define($GLOBALS["VAR_PREFIXU"]."_MD_DBUPDATED", "Database has been updated");
+define($GLOBALS["VAR_PREFIXU"]."_MD_UPDATED","The blog is updated with %s articles inserted");
+define($GLOBALS["VAR_PREFIXU"]."_MD_DBUPDATED","Database has been updated");
 
-define($GLOBALS["VAR_PREFIXU"]."_MD_PREVIOUS", "<<");
-define($GLOBALS["VAR_PREFIXU"]."_MD_NEXT", ">>");
+define($GLOBALS["VAR_PREFIXU"]."_MD_PREVIOUS","<<");
+define($GLOBALS["VAR_PREFIXU"]."_MD_NEXT",">>");
 
 
 define($GLOBALS["VAR_PREFIXU"]."_MD_PENDING","Pending");
@@ -96,7 +96,7 @@ define($GLOBALS["VAR_PREFIXU"]."_MD_ACTIVE","Active");
 define($GLOBALS["VAR_PREFIXU"]."_MD_EXPIRED","Expired");
 
 /*
-define($GLOBALS["VAR_PREFIXU"]."_MD_TYPES", "Types");
+define($GLOBALS["VAR_PREFIXU"]."_MD_TYPES","Types");
 define($GLOBALS["VAR_PREFIXU"]."_MD_APPROVED","Approved");
 define($GLOBALS["VAR_PREFIXU"]."_MD_DELETED","Deleted");
 define($GLOBALS["VAR_PREFIXU"]."_MD_EXPIRATION","Expiration date");
@@ -113,20 +113,20 @@ define($GLOBALS["VAR_PREFIXU"]."_MD_VIEWALL","View full text");
 define($GLOBALS["VAR_PREFIXU"]."_MD_COMMENTS","Comments");
 define($GLOBALS["VAR_PREFIXU"]."_MD_CLICKTOCOPY","Click to copy");
 
-define($GLOBALS["VAR_PREFIXU"]."_MD_SORT", "Sort");
+define($GLOBALS["VAR_PREFIXU"]."_MD_SORT","Sort");
 
-define($GLOBALS["VAR_PREFIXU"]."_MD_FULLVIEW", "Fulltext");
-define($GLOBALS["VAR_PREFIXU"]."_MD_LISTVIEW", "List");
-define($GLOBALS["VAR_PREFIXU"]."_MD_RATING", "Rating");
-define($GLOBALS["VAR_PREFIXU"]."_MD_DEFAULT", "Default");
-define($GLOBALS["VAR_PREFIXU"]."_MD_BLOGS", "Blogs");
-define($GLOBALS["VAR_PREFIXU"]."_MD_BOOKMARKS", "Bookmarks");
-define($GLOBALS["VAR_PREFIXU"]."_MD_HOME", "Home");
+define($GLOBALS["VAR_PREFIXU"]."_MD_FULLVIEW","Fulltext");
+define($GLOBALS["VAR_PREFIXU"]."_MD_LISTVIEW","List");
+define($GLOBALS["VAR_PREFIXU"]."_MD_RATING","Rating");
+define($GLOBALS["VAR_PREFIXU"]."_MD_DEFAULT","Default");
+define($GLOBALS["VAR_PREFIXU"]."_MD_BLOGS","Blogs");
+define($GLOBALS["VAR_PREFIXU"]."_MD_BOOKMARKS","Bookmarks");
+define($GLOBALS["VAR_PREFIXU"]."_MD_HOME","Home");
 
-define($GLOBALS["VAR_PREFIXU"]."_MD_BLOGEXISTS", "A blog with the feed already exists");
-define($GLOBALS["VAR_PREFIXU"]."_MD_EMPTY_BLOG", "Empty");
+define($GLOBALS["VAR_PREFIXU"]."_MD_BLOGEXISTS","A blog with the feed already exists");
+define($GLOBALS["VAR_PREFIXU"]."_MD_EMPTY_BLOG","Empty");
 
-define($GLOBALS["VAR_PREFIXU"]."_MD_TRANSFER", "Transfer");
-define($GLOBALS["VAR_PREFIXU"]."_MD_TRANSFER_DESC", "Transfer the article to other applications");
+define($GLOBALS["VAR_PREFIXU"]."_MD_TRANSFER","Transfer");
+define($GLOBALS["VAR_PREFIXU"]."_MD_TRANSFER_DESC","Transfer the article to other applications");
 define($GLOBALS["VAR_PREFIXU"]."_MD_TRANSFER_DONE","The action is done successully: %s");
 ?>
