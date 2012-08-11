@@ -13,72 +13,72 @@ include XOOPS_ROOT_PATH."/modules/".$url_arr[2]."/include/vars.php";
 
 if(defined($GLOBALS["VAR_PREFIXU"]."_LANG_EN_ADMIN")) return; define($GLOBALS["VAR_PREFIXU"]."_LANG_EN_ADMIN",1);
 
-define($GLOBALS["VAR_PREFIXU"]."_AM_ARTICLES", "ÎÄÕÂ¹ÜÀí");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ARTICLES","ï¿½ï¿½ï¿½Â¹ï¿½ï¿½ï¿½");
 
-define($GLOBALS["VAR_PREFIXU"]."_AM_TITLE", "±êÌâ");
-define($GLOBALS["VAR_PREFIXU"]."_AM_CATEGORY", "·ÖÀà");
+define($GLOBALS["VAR_PREFIXU"]."_AM_TITLE","ï¿½ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_AM_CATEGORY","ï¿½ï¿½ï¿½ï¿½");
 
-//define($GLOBALS["VAR_PREFIXU"]."_AM_CATEGORIES", "Categories");
-//define($GLOBALS["VAR_PREFIXU"]."_AM_ADDCATEGORY", "Add Category");
+//define($GLOBALS["VAR_PREFIXU"]."_AM_CATEGORIES","Categories");
+//define($GLOBALS["VAR_PREFIXU"]."_AM_ADDCATEGORY","Add Category");
 
-define($GLOBALS["VAR_PREFIXU"]."_AM_ARTICLE", "ÎÄÕÂ");
-define($GLOBALS["VAR_PREFIXU"]."_AM_ACTION", "²Ù×÷");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ARTICLE","ï¿½ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ACTION","ï¿½ï¿½ï¿½ï¿½");
 
-define($GLOBALS["VAR_PREFIXU"]."_AM_PREFERENCES", "Ä£¿é²ÎÊý");
-define($GLOBALS["VAR_PREFIXU"]."_AM_ON", "ÆôÓÃ");
-define($GLOBALS["VAR_PREFIXU"]."_AM_OFF", "¹Ø±Õ");
-define($GLOBALS["VAR_PREFIXU"]."_AM_SAFEMODE", "safemod");
-define($GLOBALS["VAR_PREFIXU"]."_AM_REGISTERGLOBALS", "register_globals");
-define($GLOBALS["VAR_PREFIXU"]."_AM_MAGICQUOTESGPC", "magic_quotes_gpc");
-define($GLOBALS["VAR_PREFIXU"]."_AM_MAXPOSTSIZE", "post_max_size");
-define($GLOBALS["VAR_PREFIXU"]."_AM_MAXINPUTTIME", "max_input_time");
-define($GLOBALS["VAR_PREFIXU"]."_AM_OUTPUTBUFFERING", "output_buffering");
+define($GLOBALS["VAR_PREFIXU"]."_AM_PREFERENCES","Ä£ï¿½ï¿½ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ON","ï¿½ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_AM_OFF","ï¿½Ø±ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_AM_SAFEMODE","safemod");
+define($GLOBALS["VAR_PREFIXU"]."_AM_REGISTERGLOBALS","register_globals");
+define($GLOBALS["VAR_PREFIXU"]."_AM_MAGICQUOTESGPC","magic_quotes_gpc");
+define($GLOBALS["VAR_PREFIXU"]."_AM_MAXPOSTSIZE","post_max_size");
+define($GLOBALS["VAR_PREFIXU"]."_AM_MAXINPUTTIME","max_input_time");
+define($GLOBALS["VAR_PREFIXU"]."_AM_OUTPUTBUFFERING","output_buffering");
 
-define($GLOBALS["VAR_PREFIXU"]."_AM_XML_EXTENSION", "xml");
-define($GLOBALS["VAR_PREFIXU"]."_AM_MB_EXTENSION", "mbstring");
-define($GLOBALS["VAR_PREFIXU"]."_AM_CURL", "curl_init");
-define($GLOBALS["VAR_PREFIXU"]."_AM_FSOCKOPEN", "fsockopen");
-define($GLOBALS["VAR_PREFIXU"]."_AM_URLFOPEN", "allow_url_fopen");
+define($GLOBALS["VAR_PREFIXU"]."_AM_XML_EXTENSION","xml");
+define($GLOBALS["VAR_PREFIXU"]."_AM_MB_EXTENSION","mbstring");
+define($GLOBALS["VAR_PREFIXU"]."_AM_CURL","curl_init");
+define($GLOBALS["VAR_PREFIXU"]."_AM_FSOCKOPEN","fsockopen");
+define($GLOBALS["VAR_PREFIXU"]."_AM_URLFOPEN","allow_url_fopen");
 
-define($GLOBALS["VAR_PREFIXU"]."_AM_STATS", "Í³¼ÆÐÅÏ¢");
-define($GLOBALS["VAR_PREFIXU"]."_AM_TOTAL_CATEGORIES", "×Ü·ÖÀà");
-define($GLOBALS["VAR_PREFIXU"]."_AM_TOTAL_BLOGS", "×ÜBlog");
-define($GLOBALS["VAR_PREFIXU"]."_AM_TOTAL_ARTICLES", "×ÜÎÄÕÂ");
+define($GLOBALS["VAR_PREFIXU"]."_AM_STATS","Í³ï¿½ï¿½ï¿½ï¿½Ï¢");
+define($GLOBALS["VAR_PREFIXU"]."_AM_TOTAL_CATEGORIES","ï¿½Ü·ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_AM_TOTAL_BLOGS","ï¿½ï¿½Blog");
+define($GLOBALS["VAR_PREFIXU"]."_AM_TOTAL_ARTICLES","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
-define($GLOBALS["VAR_PREFIXU"]."_AM_DBUPDATED", "Êý¾Ý¿âÒÑ¸üÐÂ");
-define($GLOBALS["VAR_PREFIXU"]."_AM_ERROR", "´íÎó");
+define($GLOBALS["VAR_PREFIXU"]."_AM_DBUPDATED","ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ñ¸ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ERROR","ï¿½ï¿½ï¿½ï¿½");
 
-define($GLOBALS["VAR_PREFIXU"]."_AM_COUNT", "ÊýÄ¿");
-define($GLOBALS["VAR_PREFIXU"]."_AM_ORDER", "Ë³Ðò");
-define($GLOBALS["VAR_PREFIXU"]."_AM_LIST", "ÁÐ±í");
-define($GLOBALS["VAR_PREFIXU"]."_AM_BLOGCOUNT", "Blogs");
-define($GLOBALS["VAR_PREFIXU"]."_AM_ARTICLECOUNT", "ÎÄÕÂ");
+define($GLOBALS["VAR_PREFIXU"]."_AM_COUNT","ï¿½ï¿½Ä¿");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ORDER","Ë³ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_AM_LIST","ï¿½Ð±ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_AM_BLOGCOUNT","Blogs");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ARTICLECOUNT","ï¿½ï¿½ï¿½ï¿½");
 
-define($GLOBALS["VAR_PREFIXU"]."_AM_EXPIRED", "¹ýÆÚ");
-define($GLOBALS["VAR_PREFIXU"]."_AM_PENDING", "´ýÉóºË");
-define($GLOBALS["VAR_PREFIXU"]."_AM_STATUS", "×´Ì¬");
-define($GLOBALS["VAR_PREFIXU"]."_AM_FEED", "Feed");
+define($GLOBALS["VAR_PREFIXU"]."_AM_EXPIRED","ï¿½ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_AM_PENDING","ï¿½ï¿½ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_AM_STATUS","×´Ì¬");
+define($GLOBALS["VAR_PREFIXU"]."_AM_FEED","Feed");
 
-define($GLOBALS["VAR_PREFIXU"]."_AM_REGISTER", "Ìá½»");
-define($GLOBALS["VAR_PREFIXU"]."_AM_APPROVE", "ÉóºË");
-define($GLOBALS["VAR_PREFIXU"]."_AM_FEATURE", "±êÊ¶¾«»ª");
-define($GLOBALS["VAR_PREFIXU"]."_AM_UPDATE", "¸üÐÂ");
-define($GLOBALS["VAR_PREFIXU"]."_AM_REMOVE", "É¾³ý");
+define($GLOBALS["VAR_PREFIXU"]."_AM_REGISTER","ï¿½á½»");
+define($GLOBALS["VAR_PREFIXU"]."_AM_APPROVE","ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_AM_FEATURE","ï¿½ï¿½Ê¶ï¿½ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_AM_UPDATE","ï¿½ï¿½ï¿½ï¿½");
+define($GLOBALS["VAR_PREFIXU"]."_AM_REMOVE","É¾ï¿½ï¿½");
 
-define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_RELEASEDATE", "Release date");
-define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_AUTHOR", "Author");
-define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_CREDITS", "Credits");
-define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_LICENSE", "License");
-define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_WEBSITE", "Homepage");
-define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_MODULE_INFO", "Module info");
-define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_MODULE_STATUS", "Status");
-define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_MODULE_TEAM", "Team members");
-define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_AUTHOR_INFO", "Author info");
-define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_AUTHOR_NAME", "Author name");
-define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_AUTHOR_WORD", "Author's word");
-define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_DISCLAIMER", "Disclaimer");
-define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_DISCLAIMER_TEXT", "GPL-licensed");
-define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_CHANGELOG", "Changelog");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_RELEASEDATE","Release date");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_AUTHOR","Author");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_CREDITS","Credits");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_LICENSE","License");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_WEBSITE","Homepage");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_MODULE_INFO","Module info");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_MODULE_STATUS","Status");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_MODULE_TEAM","Team members");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_AUTHOR_INFO","Author info");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_AUTHOR_NAME","Author name");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_AUTHOR_WORD","Author's word");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_DISCLAIMER","Disclaimer");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_DISCLAIMER_TEXT","GPL-licensed");
+define($GLOBALS["VAR_PREFIXU"]."_AM_ABOUT_CHANGELOG","Changelog");
 
-define($GLOBALS["VAR_PREFIXU"]."_AM_BLOGEXISTS", "ÒÑ¾­ÓÐ¸ÃBlog´æÔÚ");
+define($GLOBALS["VAR_PREFIXU"]."_AM_BLOGEXISTS","ï¿½Ñ¾ï¿½ï¿½Ð¸ï¿½Blogï¿½ï¿½ï¿½ï¿½");
 ?>

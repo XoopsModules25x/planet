@@ -82,13 +82,13 @@ define($GLOBALS["VAR_PREFIXU"]."_MD_SUBMITTER","提交者");
 define($GLOBALS["VAR_PREFIXU"]."_MD_VIEWS","点击");
 define($GLOBALS["VAR_PREFIXU"]."_MD_RATE","评分");
 define($GLOBALS["VAR_PREFIXU"]."_MD_RATEIT","投票!");
-define($GLOBALS["VAR_PREFIXU"]."_MD_TIME", "时间");
+define($GLOBALS["VAR_PREFIXU"]."_MD_TIME","时间");
 
-define($GLOBALS["VAR_PREFIXU"]."_MD_UPDATED", "该Blog已更新，有 %s 篇文章添加到数据库中");
-define($GLOBALS["VAR_PREFIXU"]."_MD_DBUPDATED", "数据库已更新");
+define($GLOBALS["VAR_PREFIXU"]."_MD_UPDATED","该Blog已更新，有 %s 篇文章添加到数据库中");
+define($GLOBALS["VAR_PREFIXU"]."_MD_DBUPDATED","数据库已更新");
 
-define($GLOBALS["VAR_PREFIXU"]."_MD_PREVIOUS", "<<");
-define($GLOBALS["VAR_PREFIXU"]."_MD_NEXT", ">>");
+define($GLOBALS["VAR_PREFIXU"]."_MD_PREVIOUS","<<");
+define($GLOBALS["VAR_PREFIXU"]."_MD_NEXT",">>");
 
 
 define($GLOBALS["VAR_PREFIXU"]."_MD_PENDING","待审核");
@@ -96,7 +96,7 @@ define($GLOBALS["VAR_PREFIXU"]."_MD_ACTIVE","正常");
 define($GLOBALS["VAR_PREFIXU"]."_MD_EXPIRED","过期");
 
 /*
-define($GLOBALS["VAR_PREFIXU"]."_MD_TYPES", "Types");
+define($GLOBALS["VAR_PREFIXU"]."_MD_TYPES","Types");
 define($GLOBALS["VAR_PREFIXU"]."_MD_APPROVED","Approved");
 define($GLOBALS["VAR_PREFIXU"]."_MD_DELETED","Deleted");
 define($GLOBALS["VAR_PREFIXU"]."_MD_EXPIRATION","Expiration date");
@@ -113,20 +113,20 @@ define($GLOBALS["VAR_PREFIXU"]."_MD_VIEWALL","View full text");
 define($GLOBALS["VAR_PREFIXU"]."_MD_COMMENTS","评论");
 define($GLOBALS["VAR_PREFIXU"]."_MD_CLICKTOCOPY","点击拷贝");
 
-define($GLOBALS["VAR_PREFIXU"]."_MD_SORT", "排序");
+define($GLOBALS["VAR_PREFIXU"]."_MD_SORT","排序");
 
-define($GLOBALS["VAR_PREFIXU"]."_MD_FULLVIEW", "全文");
-define($GLOBALS["VAR_PREFIXU"]."_MD_LISTVIEW", "列表");
-define($GLOBALS["VAR_PREFIXU"]."_MD_RATING", "评分");
-define($GLOBALS["VAR_PREFIXU"]."_MD_DEFAULT", "缺省");
-define($GLOBALS["VAR_PREFIXU"]."_MD_BLOGS", "Blogs");
-define($GLOBALS["VAR_PREFIXU"]."_MD_BOOKMARKS", "收藏");
-define($GLOBALS["VAR_PREFIXU"]."_MD_HOME", "首页");
+define($GLOBALS["VAR_PREFIXU"]."_MD_FULLVIEW","全文");
+define($GLOBALS["VAR_PREFIXU"]."_MD_LISTVIEW","列表");
+define($GLOBALS["VAR_PREFIXU"]."_MD_RATING","评分");
+define($GLOBALS["VAR_PREFIXU"]."_MD_DEFAULT","缺省");
+define($GLOBALS["VAR_PREFIXU"]."_MD_BLOGS","Blogs");
+define($GLOBALS["VAR_PREFIXU"]."_MD_BOOKMARKS","收藏");
+define($GLOBALS["VAR_PREFIXU"]."_MD_HOME","首页");
 
-define($GLOBALS["VAR_PREFIXU"]."_MD_BLOGEXISTS", "已经有该Blog存在");
-define($GLOBALS["VAR_PREFIXU"]."_MD_EMPTY_BLOG", "清空");
+define($GLOBALS["VAR_PREFIXU"]."_MD_BLOGEXISTS","已经有该Blog存在");
+define($GLOBALS["VAR_PREFIXU"]."_MD_EMPTY_BLOG","清空");
 
-define($GLOBALS["VAR_PREFIXU"]."_MD_TRANSFER", "工具箱");
-define($GLOBALS["VAR_PREFIXU"]."_MD_TRANSFER_DESC", "将该文章转到其他应用中");
+define($GLOBALS["VAR_PREFIXU"]."_MD_TRANSFER","工具箱");
+define($GLOBALS["VAR_PREFIXU"]."_MD_TRANSFER_DESC","将该文章转到其他应用中");
 define($GLOBALS["VAR_PREFIXU"]."_MD_TRANSFER_DONE","操作已成功执行: %s");
 ?>
