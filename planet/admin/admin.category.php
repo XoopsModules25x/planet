@@ -21,15 +21,17 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 // ------------------------------------------------------------------------ //
 // Author: phppp (D.J., infomax@gmail.com)                                  //
-// URL: http://xoopsforge.com, http://xoops.org.cn                          //
+// URL: http://xoops.org                         //
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
-include("header.php");
+include( "admin_header.php" );
 require_once(XOOPS_ROOT_PATH . "/class/xoopsformloader.php");
 
 xoops_cp_header();
+$indexAdmin = new ModuleAdmin();
+echo $indexAdmin->addNavigation('admin.category.php');
 require XOOPS_ROOT_PATH."/modules/".$xoopsModule->getVar("dirname")."/include/vars.php";
-planet_adminmenu(1);
+//planet_adminmenu(1);
 
 $op = !empty($_POST["op"])?$_POST["op"]:(!empty($_GET["op"])?$_GET["op"]:"");
 $cat_id = !empty($_POST["category"])?$_POST["category"]:(!empty($_GET["category"])?$_GET["category"]:0);
@@ -119,11 +121,12 @@ switch($op){
         echo "<form name='list' method='post'>";
         echo "<table border='0' cellpadding='4' cellspacing='1' width='100%' class='outer'>";
         echo "<tr align='center'>";
-        echo "<td class='bg3' width='5%'>" . planet_constant("AM_ORDER") . "</td>";
-        echo "<td class='bg3' width='5%'>" . _EDIT . "</td>";
-        echo "<td class='bg3' width='5%'>" . _DELETE . "</td>";
-        echo "<td class='bg3' width='80%'>" . planet_constant("AM_TITLE") . "</td>";
-        echo "<td class='bg3' width='5%'>" . planet_constant("AM_BLOGCOUNT") . "</td>";
+        echo "<th class='bg3' width='5%'>" . planet_constant("AM_ORDER") . "</td>";
+        echo "<th align='left' class='bg3' width='80%'>" . planet_constant("AM_TITLE") . "</td>";
+        echo "<th class='bg3' width='5%'>" . planet_constant("AM_BLOGCOUNT") . "</td>";
+        echo "<th class='bg3' width='5%'>" . planet_constant("AM_ACTIONS") . "</td>";
+//        echo "<td class='bg3' width='5%'>" . _DELETE . "</td>";
+
         echo "</tr>";
         
         $ii = 0;
@@ -131,10 +134,11 @@ switch($op){
             echo "<tr class='odd' align='left'>";
             echo "<td><input type='hidden' name='cat[]' value='".$cid."' />";
             echo "<input type='text' name='cat_order[]' value='".($ii*10)."' /></td>";
-            echo "<td><a href='admin.category.php?op=edit&amp;category=".$cid."' title='"._EDIT."' />"._EDIT."</a></td>";
-            echo "<td><a href='admin.category.php?op=del&amp;category=".$cid."' title='"._DELETE."' />"._DELETE."</a></td>";
             echo "<td>".$categories[$cid]."</td>";
-            echo "<td>".@$blog_counts[$cid]."</td>";
+            echo "<td align='center'>".@$blog_counts[$cid]."</td>";
+
+        echo "<td align='center'><a href='admin.category.php?op=edit &amp;category='".$cid."' title='"._EDIT."'><img src='".  $pathIcon16 ."/edit.png '". "alt='" . _EDIT . "' title='" ._EDIT."' </a>&nbsp;
+                  <a href='admin.category.php?op=del &amp;category='".$cid."' title='"._DELETE."'><img src='". $pathIcon16 ."/delete.png '"." alt='" . _EDIT . "' title='"._DELETE."' </a></td>";
             echo "</tr>";			
             $ii++;
 		}

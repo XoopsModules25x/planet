@@ -21,7 +21,7 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 // ------------------------------------------------------------------------ //
 // Author: phppp (D.J., infomax@gmail.com)                                  //
-// URL: http://xoopsforge.com, http://xoops.org.cn                          //
+// URL: http://xoops.org                         //
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
 /**
@@ -247,7 +247,9 @@ class [CLASS_PREFIX]BlogHandler extends ArtObjectHandler
 	    
 	    /* parse items */
 	    $res = $this->parse($content, $blog->getVar("blog_charset"), array("items"));
+		//xoops_message($res);
 	    $items = $res["items"];
+		//xoops_message($items);
 	    $blog_time = 0;
 	    $crit = $blog->getVar("blog_time");
 	    $articles = array();
@@ -318,10 +320,11 @@ class [CLASS_PREFIX]BlogHandler extends ArtObjectHandler
 	    }
 		require_once XOOPS_ROOT_PATH."/modules/".$GLOBALS["moddirname"]."/class/xmlparser.php";
 		
-		$parser = new XmlParser( $content, $charset, empty($xlanguage["charset_base"]) ? _CHARSET : $xlanguage["charset_base"], $tags );
+		$parser = new XmlParser( $content, $charset, _CHARSET, $tags );
 		if (!$parser) {
 			return $res;
 		}
+		//xoops_message($parser);
 		foreach($tags as $tag){
 			$res[$tag] = $parser->{$tag};
 		}

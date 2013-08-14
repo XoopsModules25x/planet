@@ -21,7 +21,7 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 // ------------------------------------------------------------------------ //
 // Author: phppp (D.J., infomax@gmail.com)                                  //
-// URL: http://xoopsforge.com, http://xoops.org.cn                          //
+// URL: http://xoops.org                         //
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
 
@@ -60,6 +60,7 @@ function [VAR_PREFIX]_article_show($options)
     global $xoopsDB;
     planet_define_url_delimiter();
 
+    $blogs = array();
     $block = array();
     $select = "art_id";
     $disp_tag = "";
@@ -264,8 +265,9 @@ function [VAR_PREFIX]_blog_show($options)
         $blogs[] = $_art;
         unset($blog, $_art);
     }
+if (isset($block["blogs"])) {
 	$block["blogs"] = $blogs;
-
+	}
     $block["dirname"] = $GLOBALS["moddirname"];
     return $block;
 }

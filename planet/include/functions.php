@@ -21,7 +21,7 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 // ------------------------------------------------------------------------ //
 // Author: phppp (D.J., infomax@gmail.com)                                  //
-// URL: http://xoopsforge.com, http://xoops.org.cn                          //
+// URL: http://xoops.org                         //
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
 
@@ -160,18 +160,10 @@ function planet_parse_function($function_string, $pattern="", $replacement="")
 /**
  * Function to convert UNIX time to formatted time string
  */
-function planet_formatTimestamp($time, $format = "c", $timeoffset = "")
+function planet_formatTimestamp($time, $format = "")
 {
-	load_functions("locale");
-	
-	if(strtolower($format) == "reg" || strtolower($format) == "") {
-		$format = "c";
-	}
-	if( (strtolower($format) == "custom" || strtolower($format) == "c") && !empty($GLOBALS["xoopsModuleConfig"]["formatTimestamp_custom"]) ) {
-		$format = $GLOBALS["xoopsModuleConfig"]["formatTimestamp_custom"];
-	}
-	
-	return XoopsLocal::formatTimestamp($time, $format, $timeoffset);
+	if(empty($time)) return "";
+	return formatTimestamp($time, $format);
 }
 
 /**

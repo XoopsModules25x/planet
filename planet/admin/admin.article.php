@@ -21,12 +21,14 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 // ------------------------------------------------------------------------ //
 // Author: phppp (D.J., infomax@gmail.com)                                  //
-// URL: http://xoopsforge.com, http://xoops.org.cn                          //
+// URL: http://xoops.org                         //
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
-include("header.php");
+include( "admin_header.php" );
 
 xoops_cp_header();
+$indexAdmin = new ModuleAdmin();
+echo $indexAdmin->addNavigation('admin.article.php');
 /*
  * To restore basic parameters in case cloned modules are installed
  * reported by programfan
@@ -35,7 +37,7 @@ xoops_cp_header();
  * it is expected to have a better solution in article 1.0
  */
 require XOOPS_ROOT_PATH."/modules/".$xoopsModule->getVar("dirname")."/include/vars.php";
-planet_adminmenu(3);
+//planet_adminmenu(3);
 
 $article_handler =& xoops_getmodulehandler("article", $GLOBALS["moddirname"]);
 if(!empty($xoopsModuleConfig["article_expire"])){

@@ -1,0 +1,19 @@
+LANGUAGE DIFFERENCES
+=====================
+
+Below are language differences from a version to next version.
+
+Legend :
++ Added
+- Removed
+* Modified
+x renamed
+
+---------------------------------------
+2.10 Beta 1  2013-08-12
+---------------------------------------
+
+admin.php
+-------------
++ _define($GLOBALS["VAR_PREFIXU"]."_AM_ACTIONS", "Actions");
+

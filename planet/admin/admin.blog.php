@@ -21,13 +21,15 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 // ------------------------------------------------------------------------ //
 // Author: phppp (D.J., infomax@gmail.com)                                  //
-// URL: http://xoopsforge.com, http://xoops.org.cn                          //
+// URL: http://xoops.org                         //
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
-include("header.php");
+include( "admin_header.php" );
 require_once(XOOPS_ROOT_PATH . "/class/xoopsformloader.php");
 
 xoops_cp_header();
+$indexAdmin = new ModuleAdmin();
+echo $indexAdmin->addNavigation('admin.blog.php');
 /*
  * To restore basic parameters in case cloned modules are installed
  * reported by programfan
@@ -36,7 +38,7 @@ xoops_cp_header();
  * it is expected to have a better solution in article 1.0
  */
 require XOOPS_ROOT_PATH."/modules/".$xoopsModule->getVar("dirname")."/include/vars.php";
-planet_adminmenu(2);
+//planet_adminmenu(2);
 
 $op = !empty($_POST["op"])?$_POST["op"]:(!empty($_GET["op"])?$_GET["op"]:"");
 $blog_id = !empty($_POST["blog"])?$_POST["blog"]:(!empty($_GET["blog"])?$_GET["blog"]:0);
@@ -276,25 +278,26 @@ switch($op){
         echo "<form name='list' id='list' method='post' action='".xoops_getenv("PHP_SELF")."'>";
         echo "<table border='0' cellpadding='4' cellspacing='1' width='100%' class='outer'>";
         echo "<tr align='center'>";
-        echo "<td class='bg3' width='5%'><input name='blog_check' id='blog_check' value='1' type='checkbox'  onclick=\"xoopsCheckAll('list', 'blog_check');\" /></td>";
-        echo "<td class='bg3' width='5%'>" . _EDIT . "</td>";
-        echo "<td class='bg3' width='5%'>" . _DELETE . "</td>";
-        echo "<td class='bg3' width='5%'>" . planet_constant("MD_EMPTY_BLOG") . "</td>";
-        echo "<td class='bg3'>" . planet_constant("AM_TITLE") . "</td>";
-        echo "<td class='bg3' width='5%'>" . planet_constant("AM_STATUS") . "</td>";
-        echo "<td class='bg3' width='40%'>" . planet_constant("AM_FEED") . "</td>";
+        echo "<th class='bg3' width='5%'><input name='blog_check' id='blog_check' value='1' type='checkbox'  onclick=\"xoopsCheckAll('list', 'blog_check');\" /></td>";
+        echo "<th class='bg3'>" . planet_constant("AM_TITLE") . "</td>";
+        echo "<th class='bg3' width='5%'>" . planet_constant("AM_STATUS") . "</td>";
+        echo "<th class='bg3' width='40%'>" . planet_constant("AM_FEED") . "</td>";
+//        echo "<th class='bg3' width='5%'>" . _EDIT . "</td>";
+//        echo "<th class='bg3' width='5%'>" . _DELETE . "</td>";
+        echo "<th class='bg3' width='10%'>" . planet_constant("AM_ACTIONS") . "</td>";
         echo "</tr>";
         
         $status = array("0"=>planet_constant("MD_PENDING"), "1"=>planet_constant("MD_ACTIVE"), "2"=>planet_constant("MD_FEATURED"));
 		foreach(array_keys($blog_objs) as $bid){
             echo "<tr class='odd' align='left'>";
-            echo "<td><input name='blog[]' value='".$bid."' type='checkbox' /></td>";
-            echo "<td><a href='admin.blog.php?op=edit&amp;blog=".$bid."' title='"._EDIT."' />"._EDIT."</a></td>";
-            echo "<td><a href='admin.blog.php?op=del&amp;blog=".$bid."' title='"._DELETE."' />"._DELETE."</a></td>";
-            echo "<td><a href='admin.blog.php?op=empty&amp;blog=".$bid."' title='".planet_constant("MD_EMPTY_BLOG")."' />".planet_constant("MD_EMPTY_BLOG")."</a></td>";
+            echo "<td align='center'><input name='blog[]' value='".$bid."' type='checkbox' /></td>";
             echo "<td><a href='".XOOPS_URL."/modules/".$GLOBALS["moddirname"]."/index.php".URL_DELIMITER."b".$bid."'>".$blog_objs[$bid]->getVar("blog_title")."</a></td>";
-            echo "<td>".$status[$blog_objs[$bid]->getVar("blog_status")]."</td>";
+            echo "<td align='center'>".$status[$blog_objs[$bid]->getVar("blog_status")]."</td>";
             echo "<td>".$blog_objs[$bid]->getVar("blog_feed")."</td>";
+            echo "<td align='center'><a href='admin.blog.php?op=edit&amp;blog=".$bid. "' title='"._EDIT."'><img src='".  $pathIcon16 ."/edit.png '". "alt='" . _EDIT . " title='" ._EDIT." </a>
+                      <a href='admin.blog.php?op=del&amp;blog=".$bid.  "' title='"._DELETE."'><img src='". $pathIcon16 ."/delete.png '"." alt='" . _EDIT . " title='"._DELETE." </a>&nbsp;
+                      <a href='admin.blog.php?op=empty&amp;blog=".$bid."' title='".planet_constant("MD_EMPTY_BLOG")."'><img src='". $pathIcon16 ."/empty.png '"." alt='" . _EDIT . " title='".planet_constant("MD_EMPTY_BLOG")."</a></td>";
+
             echo "</tr>";			
 		}
         echo "<tr class='even' align='center'>";
