@@ -49,10 +49,10 @@ $modversion['dirmoduleadmin'] = '/Frameworks/moduleclasses/moduleadmin';
 $modversion['icons16']        = '../../Frameworks/moduleclasses/icons/16';
 $modversion['icons32']        = '../../Frameworks/moduleclasses/icons/32';
 //about
-$modversion['release_date']        = '2013/07/11';
+$modversion['release_date']        = '2013/08/12';
 $modversion["module_website_url"]  = "www.xoops.org";
 $modversion["module_website_name"] = "XOOPS";
-$modversion["module_status"]       = "Final";
+$modversion["module_status"]       = "Beta 1";
 $modversion['min_php']             = '5.2';
 $modversion['min_xoops']           = "2.5.6";
 $modversion['min_admin']           = '1.1';
