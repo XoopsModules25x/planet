@@ -21,7 +21,7 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 // ------------------------------------------------------------------------ //
 // Author: phppp (D.J., infomax@gmail.com)                                  //
-// URL: http://xoopsforge.com, http://xoops.org.cn                          //
+// URL: http://xoops.org                         //
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
 
@@ -58,9 +58,24 @@ function planet_load_config()
 	if(isset($moduleConfig)){
 		return $moduleConfig;
 	}
-	load_functions("config");
-	$moduleConfig = mod_loadConfig($GLOBALS["moddirname"]);
 	
+    if(is_object($GLOBALS["xoopsModule"]) && $GLOBALS["xoopsModule"]->getVar("dirname") == $GLOBALS["moddirname"]){
+	    $moduleConfig =& $GLOBALS["xoopsModuleConfig"];
+    }else{
+		$module_handler = &xoops_gethandler('module');
+		$module = $module_handler->getByDirname($GLOBALS["moddirname"]);
+	
+	    $config_handler = &xoops_gethandler('config');
+	    $criteria = new CriteriaCompo(new Criteria('conf_modid', $module->getVar('mid')));
+	    $configs =& $config_handler->getConfigs($criteria);
+	    foreach(array_keys($configs) as $i){
+		    $moduleConfig[$configs[$i]->getVar('conf_name')] = $configs[$i]->getConfValueForOutput();
+	    }
+	    unset($configs);
+    }
+	if($customConfig = @include(XOOPS_ROOT_PATH."/modules/".$GLOBALS["moddirname"]."/include/plugin.php")){
+		$moduleConfig = array_merge($moduleConfig, $customConfig);
+	}
     return $moduleConfig;
 }
 

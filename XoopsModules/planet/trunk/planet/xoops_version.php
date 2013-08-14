@@ -21,7 +21,7 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 // ------------------------------------------------------------------------ //
 // Author: phppp (D.J., infomax@gmail.com)                                  //
-// URL: http://xoopsforge.com, http://xoops.org.cn                          //
+// URL: http://xoops.org                         //
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
 
@@ -31,7 +31,7 @@ include dirname(__FILE__)."/include/vars.php";
 
 $modversion = array(
 	"name"			=> planet_constant("MI_NAME"),
-	"version"		=> 2.02,
+	"version"		=> 2.10,
 	"description"	=> planet_constant("MI_DESC"),
 	"credits" 		=> "The Xoops Project",
 	"image"			=> "images/logo.png",
@@ -39,22 +39,28 @@ $modversion = array(
 	"author"		=> "D.J. (phppp)",
 	"help" 			=> XOOPS_URL."/modules/".$GLOBALS["moddirname"]."/readme.html"
 	);
-
-$modversion["help"] = XOOPS_URL."/modules/".$GLOBALS["moddirname"]."/readme.html";
+$modversion['help']        = 'page=help';
 $modversion["license"] = "GNU see LICENSE";
 $modversion["license_file"] = XOOPS_URL."/modules/".$GLOBALS["moddirname"]."/gpl.txt";
-$modversion["release"] = "2006-01-29";
+$modversion["author_word"] = "";
+$modversion["module_team"] = "";
 
-$modversion["author_website_url"] = "http://xoopsforge.com";
-$modversion["author_website_name"] = "Xoops Forge";
-$modversion["author_word"] = "
-";
+$modversion['dirmoduleadmin'] = '/Frameworks/moduleclasses/moduleadmin';
+$modversion['icons16']        = '../../Frameworks/moduleclasses/icons/16';
+$modversion['icons32']        = '../../Frameworks/moduleclasses/icons/32';
+//about
+$modversion['release_date']        = '2013/07/11';
+$modversion["module_website_url"]  = "www.xoops.org";
+$modversion["module_website_name"] = "XOOPS";
+$modversion["module_status"]       = "Final";
+$modversion['min_php']             = '5.2';
+$modversion['min_xoops']           = "2.5.6";
+$modversion['min_admin']           = '1.1';
+$modversion['min_db']              = array(
+    'mysql'  => '5.0.7',
+    'mysqli' => '5.0.7'
+);
 
-$modversion["module_status"] = "stable";
-$modversion["module_team"] = "
-";
-$modversion["module_website_url"] = "http://xoopsforge.com/modules/planet/";
-$modversion["module_website_name"] = "XOOPS FORGE";
 
 
 // database tables
@@ -70,6 +76,7 @@ $modversion["tables"] = array(
 
 // Admin things
 $modversion["hasAdmin"] = 1;
+$modversion['system_menu'] = 1;
 $modversion["adminindex"] = "admin/index.php";
 $modversion["adminmenu"] = "admin/menu.php";
 

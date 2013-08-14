@@ -21,7 +21,7 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 // ------------------------------------------------------------------------ //
 // Author: phppp (D.J., infomax@gmail.com)                                  //
-// URL: http://xoopsforge.com, http://xoops.org.cn                          //
+// URL: http://xoops.org                         //
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
 /**
@@ -75,7 +75,7 @@ class Barticle extends ArtObject
         $this->initVar("dosmiley", XOBJ_DTYPE_INT, 1);
         $this->initVar("doxcode", XOBJ_DTYPE_INT, 1);
         $this->initVar("doimage", XOBJ_DTYPE_INT, 1);
-        $this->initVar("dobr", XOBJ_DTYPE_INT, 0);
+        $this->initVar("dobr", XOBJ_DTYPE_INT, 1);
     }
 
     /**
@@ -338,7 +338,7 @@ class [CLASS_PREFIX]ArticleHandler extends ArtObjectHandler
             	$ret[$myrow[$this->keyName]] = $object;
         	}else{
 	        	foreach($myrow as $key=>$val){
-            		$ret[$myrow[$this->keyName]][$key] = $val;
+            		$ret[$myrow[$this->keyName]][$key] = ($object->vars[$key]["changed"])?$object->getVar($key):$val;
         		}
         	}
             unset($object);
