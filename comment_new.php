@@ -1,5 +1,5 @@
 <?php
-// $Id$
+//
 // ------------------------------------------------------------------------ //
 // This program is free software; you can redistribute it and/or modify     //
 // it under the terms of the GNU General Public License as published by     //
@@ -24,12 +24,11 @@
 // URL: http://xoops.org                         //
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
-include "header.php";
-$com_itemid = isset($_GET['com_itemid']) ? intval($_GET['com_itemid']) : 0;
+include __DIR__ . '/header.php';
+$com_itemid = isset($_GET['com_itemid']) ? (int)$_GET['com_itemid'] : 0;
 if ($com_itemid > 0) {
-	$article_handler =& xoops_getmodulehandler("article", $GLOBALS["moddirname"]);
-	$article_obj =& $article_handler->get($com_itemid);
-	$com_replytitle = $article_obj->getVar("art_title");
-	include_once XOOPS_ROOT_PATH.'/include/comment_new.php';
+    $article_handler = xoops_getModuleHandler('article', $GLOBALS['moddirname']);
+    $article_obj     =& $article_handler->get($com_itemid);
+    $com_replytitle  = $article_obj->getVar('art_title');
+    include_once XOOPS_ROOT_PATH . '/include/comment_new.php';
 }
-?>

@@ -1,5 +1,5 @@
 <?php
-// $Id$
+//
 // ------------------------------------------------------------------------ //
 // This program is free software; you can redistribute it and/or modify     //
 // it under the terms of the GNU General Public License as published by     //
@@ -25,20 +25,22 @@
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
 
-if (!defined('XOOPS_ROOT_PATH')){ exit(); }
+// defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
 $current_path = __FILE__;
-if ( DIRECTORY_SEPARATOR != "/" ) $current_path = str_replace( strpos( $current_path, "\\\\", 2 ) ? "\\\\" : DIRECTORY_SEPARATOR, "/", $current_path);
-$url_arr = explode("/",strstr($current_path,"/modules/"));
-include XOOPS_ROOT_PATH . "/modules/".$url_arr[2]."/include/vars.php";
-include_once(XOOPS_ROOT_PATH . "/modules/".$GLOBALS["moddirname"]."/include/functions.php");
+if (DIRECTORY_SEPARATOR !== '/') {
+    $current_path = str_replace(strpos($current_path, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, '/', $current_path);
+}
+$url_arr = explode('/', strstr($current_path, '/modules/'));
+include XOOPS_ROOT_PATH . '/modules/' . $url_arr[2] . '/include/vars.php';
+include_once XOOPS_ROOT_PATH . '/modules/' . $GLOBALS['moddirname'] . '/include/functions.php';
 
 /**
- * Functions handling module blocks 
- * @package module::article
+ * Functions handling module blocks
+ * @package   module::article
  *
- * @author  D.J. (phppp)
- * @copyright copyright &copy; 2000 The XOOPS Project
+ * @author    D.J. (phppp)
+ * @copyright copyright &copy; 2000 XOOPS Project
  *
  * @param VAR_PREFIX variable prefix for the function name
  */
@@ -47,13 +49,13 @@ planet_parse_function('
 /**#@+
  * Function to display articles
  *
- * {@link article} 
+ * {@link article}
  *
- * @param	array 	$options: 
- *						0 - criteria for fetching articles; 
- *						1 - limit for article count; 
- *						2 - title length; 
- *						3 - summary length; 
+ * @param   array   $options:
+ *                      0 - criteria for fetching articles;
+ *                      1 - limit for article count;
+ *                      2 - title length;
+ *                      3 - summary length;
  */
 function [VAR_PREFIX]_article_show($options)
 {
@@ -84,11 +86,11 @@ function [VAR_PREFIX]_article_show($options)
             $disp_tag = "ave_rating";
             break;
         case "random":
-        	$order = "RAND()";
-        	$mysql_version = substr(trim(mysql_get_server_info()), 0, 3);
-        	/* for MySQL 4.1+ */
-        	if($mysql_version >= "4.1"){
-            	$from = " LEFT JOIN (SELECT art_id AS aid FROM ".planet_DB_prefix("article")." LIMIT 1000 ORDER BY art_id DESC) AS random ON art_id = random.aid";
+            $order = "RAND()";
+            $mysql_version = substr(trim(mysqli_get_server_info()), 0, 3);
+            /* for MySQL 4.1+ */
+            if ($mysql_version >= "4.1") {
+                $from = " LEFT JOIN (SELECT art_id AS aid FROM ".planet_DB_prefix("article")." LIMIT 1000 ORDER BY art_id DESC) AS random ON art_id = random.aid";
             }
             break;
         case "time":
@@ -97,10 +99,10 @@ function [VAR_PREFIX]_article_show($options)
             break;
     }
     $select .= ", blog_id, art_title, art_time";
-	if($options[3]>0){
-		$select .=", art_content";
-	}
-	
+    if ($options[3]>0) {
+        $select .=", art_content";
+    }
+
     $query = "SELECT $select FROM " . planet_DB_prefix("article"). $from;
     $query .= " ORDER BY " . $order;
     $result = $xoopsDB->query($query, $options[1], 0);
@@ -108,40 +110,41 @@ function [VAR_PREFIX]_article_show($options)
         return false;
     }
     $rows = array();
-    $article_handler =& xoops_getmodulehandler("article", $GLOBALS["moddirname"]);
+    $article_handler = xoops_getModuleHandler("article", $GLOBALS["moddirname"]);
     while ($row = $xoopsDB->fetchArray($result)) {
-	    if(!empty($row["ave_rating"])) $row["art_rating"] = $row["ave_rating"];
-        $article =& $article_handler->create(false);
+        if(!empty($row["ave_rating"])) $row["art_rating"] = $row["ave_rating"];
+        $article = $article_handler->create(false);
         $article->assignVars($row);
         $_art = array();
-        foreach($row as $tag=>$val) {
+        foreach ($row as $tag=>$val) {
             $_art[$tag] = @$article->getVar($tag);
         }
         $_art["time"] = $article->getTime();
-        if(!empty($disp_tag)){
-	        $_art["disp"] = @$article->getVar($disp_tag);
-	        if(!empty($row[$disp_tag]) && empty($_art["disp"])) $_art["disp"] = $row[$disp_tag];
+        if (!empty($disp_tag)) {
+            $_art["disp"] = @$article->getVar($disp_tag);
+            if(!empty($row[$disp_tag]) && empty($_art["disp"])) $_art["disp"] = $row[$disp_tag];
         }
-        if(!empty($options[2])){
-	        $_art["art_title"] = xoops_substr($_art["art_title"], 0, $options[2]);
+        if (!empty($options[2])) {
+            $_art["art_title"] = xoops_substr($_art["art_title"], 0, $options[2]);
         }
-        if(!empty($options[3])){
-	        $_art["summary"] = $article->getSummary($options[3]);
+        if (!empty($options[3])) {
+            $_art["summary"] = $article->getSummary($options[3]);
         }
         $arts[] = $_art;
         unset($article, $_art);
         $bids[$row["blog_id"]] = 1;
     }
 
-    $blog_handler =& xoops_getmodulehandler("blog", $GLOBALS["moddirname"]);
-    $blogs =& $blog_handler->getList(new Criteria("blog_id", "(".implode(",", array_keys($bids)).")", "IN"));
+    $blog_handler = xoops_getModuleHandler("blog", $GLOBALS["moddirname"]);
+    $blogs = $blog_handler->getList(new Criteria("blog_id", "(".implode(",", array_keys($bids)).")", "IN"));
 
-	for($i=0;$i<count($arts);$i++){
-		$arts[$i]["blog"] = @$blogs[$arts[$i]["blog_id"]];
-	}
-	$block["articles"] = $arts;
+    for ($i=0;$i<count($arts);++$i) {
+        $arts[$i]["blog"] = @$blogs[$arts[$i]["blog_id"]];
+    }
+    $block["articles"] = $arts;
 
     $block["dirname"] = $GLOBALS["moddirname"];
+
     return $block;
 }
 
@@ -149,25 +152,25 @@ function [VAR_PREFIX]_article_edit($options)
 {
     $form = planet_constant("MB_TYPE")."&nbsp;&nbsp;<select name=\"options[0]\">";
     $form .= "<option value=\"time\"";
-	    if($options[0]=="time") $form .= " selected=\"selected\" ";
-	    $form .= ">".planet_constant("MB_TYPE_TIME")."</option>\n";
+        if($options[0]=="time") $form .= " selected=\"selected\" ";
+        $form .= ">".planet_constant("MB_TYPE_TIME")."</option>\n";
     $form .= "<option value=\"views\"";
-	    if($options[0]=="views") $form .= " selected=\"selected\" ";
-	    $form .= ">".planet_constant("MB_TYPE_VIEWS")."</option>\n";
+        if($options[0]=="views") $form .= " selected=\"selected\" ";
+        $form .= ">".planet_constant("MB_TYPE_VIEWS")."</option>\n";
     $form .= "<option value=\"rates\"";
-	    if($options[0]=="rates") $form .= " selected=\"selected\" ";
-	    $form .= ">".planet_constant("MB_TYPE_RATES")."</option>\n";
+        if($options[0]=="rates") $form .= " selected=\"selected\" ";
+        $form .= ">".planet_constant("MB_TYPE_RATES")."</option>\n";
     $form .= "<option value=\"rating\"";
-	    if($options[0]=="rating") $form .= " selected=\"selected\" ";
-	    $form .= ">".planet_constant("MB_TYPE_RATING")."</option>\n";
+        if($options[0]=="rating") $form .= " selected=\"selected\" ";
+        $form .= ">".planet_constant("MB_TYPE_RATING")."</option>\n";
     $form .= "<option value=\"random\"";
-	    if($options[0]=="random") $form .= " selected=\"selected\" ";
-	    $form .= ">".planet_constant("MB_TYPE_RANDOM")."</option>\n";
-    $form .= "</select><br /><br />";
+        if($options[0]=="random") $form .= " selected=\"selected\" ";
+        $form .= ">".planet_constant("MB_TYPE_RANDOM")."</option>\n";
+    $form .= "</select><br><br>";
 
-    $form .= planet_constant("MB_ITEMS")."&nbsp;&nbsp;<input type=\"text\" name=\"options[1]\" value=\"" . $options[1] . "\" /><br /><br />";
-    $form .= planet_constant("MB_TITLE_LENGTH")."&nbsp;&nbsp;<input type=\"text\" name=\"options[2]\" value=\"" . $options[2] . "\" /><br /><br />";
-    $form .= planet_constant("MB_SUMMARY_LENGTH")."&nbsp;&nbsp;<input type=\"text\" name=\"options[3]\" value=\"" . $options[3] . "\" /><br /><br />";
+    $form .= planet_constant("MB_ITEMS")."&nbsp;&nbsp;<input type=\"text\" name=\"options[1]\" value=\"" . $options[1] . "\" /><br><br>";
+    $form .= planet_constant("MB_TITLE_LENGTH")."&nbsp;&nbsp;<input type=\"text\" name=\"options[2]\" value=\"" . $options[2] . "\" /><br><br>";
+    $form .= planet_constant("MB_SUMMARY_LENGTH")."&nbsp;&nbsp;<input type=\"text\" name=\"options[3]\" value=\"" . $options[3] . "\" /><br><br>";
 
     return $form;
 }
@@ -175,13 +178,13 @@ function [VAR_PREFIX]_article_edit($options)
 /**#@+
  * Function to display blogs
  *
- * {@link blog} 
+ * {@link blog}
  *
- * @param	array 	$options: 
- *						0 - criteria for fetching blogs; 
- *						1 - limit for blog count; 
- *						2 - title length; 
- *						3 - show desc; 
+ * @param   array   $options:
+ *                      0 - criteria for fetching blogs;
+ *                      1 - limit for blog count;
+ *                      2 - title length;
+ *                      3 - show desc;
  */
 function [VAR_PREFIX]_blog_show($options)
 {
@@ -218,11 +221,11 @@ function [VAR_PREFIX]_blog_show($options)
             $disp_tag = "ave_rating";
             break;
         case "random":
-        	$order = "RAND()";
-        	$mysql_version = substr(trim(mysql_get_server_info()), 0, 3);
-        	/* for MySQL 4.1+ */
-        	if($mysql_version >= "4.1"){
-	            $from = " LEFT JOIN (SELECT blog_id AS aid FROM ".planet_DB_prefix("blog")." LIMIT 1000 ORDER BY blog_id DESC) AS random ON blog_id = random.aid";
+            $order = "RAND()";
+            $mysql_version = substr(trim(mysqli_get_server_info()), 0, 3);
+            /* for MySQL 4.1+ */
+            if ($mysql_version >= "4.1") {
+                $from = " LEFT JOIN (SELECT blog_id AS aid FROM ".planet_DB_prefix("blog")." LIMIT 1000 ORDER BY blog_id DESC) AS random ON blog_id = random.aid";
             }
             break;
         default:
@@ -230,8 +233,8 @@ function [VAR_PREFIX]_blog_show($options)
             break;
     }
     $select .= ", blog_title";
-    if(!empty($options[3])){
-	    $select .=", blog_desc";
+    if (!empty($options[3])) {
+        $select .=", blog_desc";
     }
 
     $query = "SELECT $select FROM " . planet_DB_prefix("blog"). $from;
@@ -242,33 +245,34 @@ function [VAR_PREFIX]_blog_show($options)
         return false;
     }
     $rows = array();
-    $blog_handler =& xoops_getmodulehandler("blog", $GLOBALS["moddirname"]);
+    $blog_handler = xoops_getModuleHandler("blog", $GLOBALS["moddirname"]);
     while ($row = $xoopsDB->fetchArray($result)) {
-	    if(!empty($row["ave_rating"])) $row["art_rating"] = $row["ave_rating"];
-        $blog =& $blog_handler->create(false);
+        if(!empty($row["ave_rating"])) $row["art_rating"] = $row["ave_rating"];
+        $blog = $blog_handler->create(false);
         $blog->assignVars($row);
         $_art = array();
-        foreach($row as $tag=>$val) {
+        foreach ($row as $tag=>$val) {
             $_art[$tag] = @$blog->getVar($tag);
         }
         $_art["time"] = $blog->getTime();
-        if(!empty($disp_tag)){
-	        $_art["disp"] = @$blog->getVar($disp_tag);
-	        if(!empty($row[$disp_tag]) && empty($_art["disp"])) $_art["disp"] = $row[$disp_tag];
+        if (!empty($disp_tag)) {
+            $_art["disp"] = @$blog->getVar($disp_tag);
+            if(!empty($row[$disp_tag]) && empty($_art["disp"])) $_art["disp"] = $row[$disp_tag];
         }
-        if(!empty($options[2])){
-	        $_art["blog_title"] = xoops_substr($_art["blog_title"], 0, $options[2]);
+        if (!empty($options[2])) {
+            $_art["blog_title"] = xoops_substr($_art["blog_title"], 0, $options[2]);
         }
-        if(!empty($options[3])){
-	        $_art["summary"] = $_art["blog_desc"];
-        }        
+        if (!empty($options[3])) {
+            $_art["summary"] = $_art["blog_desc"];
+        }
         $blogs[] = $_art;
         unset($blog, $_art);
     }
 if (isset($block["blogs"])) {
-	$block["blogs"] = $blogs;
-	}
+    $block["blogs"] = $blogs;
+    }
     $block["dirname"] = $GLOBALS["moddirname"];
+
     return $block;
 }
 
@@ -276,31 +280,31 @@ function [VAR_PREFIX]_blog_edit($options)
 {
     $form = planet_constant("MB_TYPE")."&nbsp;&nbsp;<select name=\"options[0]\">";
     $form .= "<option value=\"featured\"";
-	    if($options[0]=="featured") $form .= " selected=\"selected\" ";
-	    $form .= ">".planet_constant("MB_TYPE_FEATURED")."</option>\n";
+        if($options[0]=="featured") $form .= " selected=\"selected\" ";
+        $form .= ">".planet_constant("MB_TYPE_FEATURED")."</option>\n";
     $form .= "<option value=\"bookmarks\"";
-	    if($options[0]=="bookmarks") $form .= " selected=\"selected\" ";
-	    $form .= ">".planet_constant("MB_TYPE_BOOKMARKS")."</option>\n";
+        if($options[0]=="bookmarks") $form .= " selected=\"selected\" ";
+        $form .= ">".planet_constant("MB_TYPE_BOOKMARKS")."</option>\n";
     $form .= "<option value=\"time\"";
-	    if($options[0]=="time") $form .= " selected=\"selected\" ";
-	    $form .= ">".planet_constant("MB_TYPE_TIME")."</option>\n";
+        if($options[0]=="time") $form .= " selected=\"selected\" ";
+        $form .= ">".planet_constant("MB_TYPE_TIME")."</option>\n";
     $form .= "<option value=\"views\"";
-	    if($options[0]=="views") $form .= " selected=\"selected\" ";
-	    $form .= ">".planet_constant("MB_TYPE_VIEWS")."</option>\n";
+        if($options[0]=="views") $form .= " selected=\"selected\" ";
+        $form .= ">".planet_constant("MB_TYPE_VIEWS")."</option>\n";
     $form .= "<option value=\"rates\"";
-	    if($options[0]=="rates") $form .= " selected=\"selected\" ";
-	    $form .= ">".planet_constant("MB_TYPE_RATES")."</option>\n";
+        if($options[0]=="rates") $form .= " selected=\"selected\" ";
+        $form .= ">".planet_constant("MB_TYPE_RATES")."</option>\n";
     $form .= "<option value=\"rating\"";
-	    if($options[0]=="rating") $form .= " selected=\"selected\" ";
-	    $form .= ">".planet_constant("MB_TYPE_RATING")."</option>\n";
+        if($options[0]=="rating") $form .= " selected=\"selected\" ";
+        $form .= ">".planet_constant("MB_TYPE_RATING")."</option>\n";
     $form .= "<option value=\"random\"";
-	    if($options[0]=="random") $form .= " selected=\"selected\" ";
-	    $form .= ">".planet_constant("MB_TYPE_RANDOM")."</option>\n";
-    $form .= "</select><br /><br />";
+        if($options[0]=="random") $form .= " selected=\"selected\" ";
+        $form .= ">".planet_constant("MB_TYPE_RANDOM")."</option>\n";
+    $form .= "</select><br><br>";
 
-    $form .= planet_constant("MB_ITEMS")."&nbsp;&nbsp;<input type=\"text\" name=\"options[1]\" value=\"" . $options[1] . "\" /><br /><br />";
-    $form .= planet_constant("MB_TITLE_LENGTH")."&nbsp;&nbsp;<input type=\"text\" name=\"options[2]\" value=\"" . $options[2] . "\" /><br /><br />";
-    $form .= planet_constant("MB_SHOWDESC")."&nbsp;&nbsp;<input type=\"text\" name=\"options[3]\" value=\"" . $options[3] . "\" /><br /><br />";
+    $form .= planet_constant("MB_ITEMS")."&nbsp;&nbsp;<input type=\"text\" name=\"options[1]\" value=\"" . $options[1] . "\" /><br><br>";
+    $form .= planet_constant("MB_TITLE_LENGTH")."&nbsp;&nbsp;<input type=\"text\" name=\"options[2]\" value=\"" . $options[2] . "\" /><br><br>";
+    $form .= planet_constant("MB_SHOWDESC")."&nbsp;&nbsp;<input type=\"text\" name=\"options[3]\" value=\"" . $options[3] . "\" /><br><br>";
 
     return $form;
 }
@@ -310,29 +314,29 @@ function [VAR_PREFIX]_blog_edit($options)
 /**#@+
  * Function to display categories
  *
- * {@link Xcategory} 
- * {@link config} 
+ * {@link Xcategory}
+ * {@link config}
  *
- * @param	array 	$options (not used) 
+ * @param   array   $options (not used)
  */
 function [VAR_PREFIX]_category_show($options)
 {
     planet_define_url_delimiter();
     $block = array();
-	$category_handler =& xoops_getmodulehandler("category", $GLOBALS["moddirname"]);
-	$blog_handler =& xoops_getmodulehandler("blog", $GLOBALS["moddirname"]);
-	$crit = new Criteria("1", 1);
-	$crit->setSort("cat_order");
-	$crit->setOrder("ASC");
-	$categories = $category_handler->getList($crit);
-	$blog_counts = $blog_handler->getCountsByCategory();
-	foreach($categories as $id=>$cat){
-		$block["categories"][]=array("id"=>$id, "title"=>$cat, "blogs"=> @intval($blog_counts[$id]));
-	}
+    $category_handler = xoops_getModuleHandler("category", $GLOBALS["moddirname"]);
+    $blog_handler = xoops_getModuleHandler("blog", $GLOBALS["moddirname"]);
+    $crit = new Criteria("1", 1);
+    $crit->setSort("cat_order");
+    $crit->setOrder("ASC");
+    $categories = $category_handler->getList($crit);
+    $blog_counts = $blog_handler->getCountsByCategory();
+    foreach ($categories as $id=>$cat) {
+        $block["categories"][]=array("id"=>$id, "title"=>$cat, "blogs"=> @(int)($blog_counts[$id]));
+    }
     $block["dirname"] = $GLOBALS["moddirname"];
     unset($categories, $cats_stats);
+
     return $block;
 }
 /**#@-*/
 ');
-?>

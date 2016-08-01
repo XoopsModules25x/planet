@@ -1,5 +1,5 @@
 <?php
-// $Id$
+//
 // ------------------------------------------------------------------------ //
 // This program is free software; you can redistribute it and/or modify     //
 // it under the terms of the GNU General Public License as published by     //
@@ -24,14 +24,18 @@
 // URL: http://xoops.org                         //
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
-include "header.php";
-$article_id = empty($_GET['article'])?0:intval($_GET['article']);
-if(empty($article_id)) return;
-if(planet_getcookie("art_".$article_id)>0) return;
-$article_handler =& xoops_getmodulehandler('article', $xoopsModule->getVar("dirname"));
-$article_obj =& $article_handler->get($article_id);
-$article_obj->setVar("art_views", $article_obj->getVar("art_views")+1, true);
+include __DIR__ . '/header.php';
+$article_id = empty($_GET['article']) ? 0 : (int)$_GET['article'];
+if (empty($article_id)) {
+    return;
+}
+if (planet_getcookie('art_' . $article_id) > 0) {
+    return;
+}
+$article_handler = xoops_getModuleHandler('article', $xoopsModule->getVar('dirname'));
+$article_obj     =& $article_handler->get($article_id);
+$article_obj->setVar('art_views', $article_obj->getVar('art_views') + 1, true);
 $article_handler->insert($article_obj, true);
-planet_setcookie("art_".$article_id, time());
+planet_setcookie('art_' . $article_id, time());
+
 return;
-?>

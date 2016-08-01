@@ -1,5 +1,5 @@
 <?php
-// $Id$
+//
 // ------------------------------------------------------------------------ //
 // This program is free software; you can redistribute it and/or modify     //
 // it under the terms of the GNU General Public License as published by     //
@@ -30,68 +30,85 @@
 The functions loaded on initializtion
 */
 
-if (!defined('XOOPS_ROOT_PATH')){ exit(); }
-if (!defined('PLANET_INI')){ exit(); }
-
-
-if(!defined("PLANET_FUNCTIONS_INI")):
-define("PLANET_FUNCTIONS_INI",1);
-
-function planet_constant($name)
-{
-	return mod_constant($name);
+// defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
+if (!defined('PLANET_INI')) {
+    exit();
 }
 
-function planet_DB_prefix($name, $isRel = false)
-{
-	return mod_DB_prefix($name, $isRel);
-}
+if (!defined('PLANET_FUNCTIONS_INI')):
+    define('PLANET_FUNCTIONS_INI', 1);
 
-function planet_load_object()
-{
-	return load_object();
-}
-
-function planet_load_config()
-{
-	static $moduleConfig;
-	if(isset($moduleConfig)){
-		return $moduleConfig;
-	}
-	
-    if(is_object($GLOBALS["xoopsModule"]) && $GLOBALS["xoopsModule"]->getVar("dirname") == $GLOBALS["moddirname"]){
-	    $moduleConfig =& $GLOBALS["xoopsModuleConfig"];
-    }else{
-		$module_handler = &xoops_gethandler('module');
-		$module = $module_handler->getByDirname($GLOBALS["moddirname"]);
-	
-	    $config_handler = &xoops_gethandler('config');
-	    $criteria = new CriteriaCompo(new Criteria('conf_modid', $module->getVar('mid')));
-	    $configs =& $config_handler->getConfigs($criteria);
-	    foreach(array_keys($configs) as $i){
-		    $moduleConfig[$configs[$i]->getVar('conf_name')] = $configs[$i]->getConfValueForOutput();
-	    }
-	    unset($configs);
+    /**
+     * @param $name
+     * @return mixed
+     */
+    function planet_constant($name) {
+        return mod_constant($name);
     }
-	if($customConfig = @include(XOOPS_ROOT_PATH."/modules/".$GLOBALS["moddirname"]."/include/plugin.php")){
-		$moduleConfig = array_merge($moduleConfig, $customConfig);
-	}
-    return $moduleConfig;
-}
 
-function planet_define_url_delimiter()
-{
-	if(defined("URL_DELIMITER")){
-		if(!in_array(URL_DELIMITER, array("?","/"))) die("Exit on security");
-	}else{
-		$moduleConfig = planet_load_config();
-		if(empty($moduleConfig["do_urw"])){
-			define("URL_DELIMITER", "?");
-		}else{
-			define("URL_DELIMITER", "/");
-		}
-	}
-}
+    /**
+     * @param      $name
+     * @param bool $isRel
+     * @return string
+     */
+    function planet_DB_prefix($name, $isRel = false) {
+        return mod_DB_prefix($name, $isRel);
+    }
+
+    /**
+     * @return bool
+     */
+    function planet_load_object() {
+        return load_object();
+    }
+
+    /**
+     * @return array|mixed
+     */
+    function planet_load_config() {
+        static $moduleConfig;
+        if (isset($moduleConfig)) {
+            return $moduleConfig;
+        }
+
+        if (is_object($GLOBALS['xoopsModule'])
+            && $GLOBALS['xoopsModule']->getVar('dirname') == $GLOBALS['moddirname']
+        ) {
+            if (isset($GLOBALS['xoopsModuleConfig'])) {
+                $moduleConfig = $GLOBALS['xoopsModuleConfig'];
+            }
+        } else {
+            $moduleHandler = xoops_getHandler('module');
+            $module        = $moduleHandler->getByDirname($GLOBALS['moddirname']);
+
+            $config_handler = xoops_getHandler('config');
+            $criteria       = new CriteriaCompo(new Criteria('conf_modid', $module->getVar('mid')));
+            $configs        = $config_handler->getConfigs($criteria);
+            foreach (array_keys($configs) as $i) {
+                $moduleConfig[$configs[$i]->getVar('conf_name')] = $configs[$i]->getConfValueForOutput();
+            }
+            unset($configs);
+        }
+        if ($customConfig = @include XOOPS_ROOT_PATH . '/modules/' . $GLOBALS['moddirname'] . '/include/plugin.php') {
+            $moduleConfig = array_merge($moduleConfig, $customConfig);
+        }
+
+        return $moduleConfig;
+    }
+
+    function planet_define_url_delimiter() {
+        if (defined('URL_DELIMITER')) {
+            if (!in_array(URL_DELIMITER, array('?', '/'))) {
+                die('Exit on security');
+            }
+        } else {
+            $moduleConfig = planet_load_config();
+            if (empty($moduleConfig['do_urw'])) {
+                define('URL_DELIMITER', '?');
+            } else {
+                define('URL_DELIMITER', '/');
+            }
+        }
+    }
 
 endif;
-?>

@@ -1,5 +1,5 @@
 <?php
-// $Id$
+//
 // ------------------------------------------------------------------------ //
 // This program is free software; you can redistribute it and/or modify     //
 // it under the terms of the GNU General Public License as published by     //
@@ -25,68 +25,66 @@
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
 /**
- * @package module::blogline
+ * @package   module::blogline
  * @copyright copyright &copy; 2005 XoopsForge.com
  */
- 
-if (!defined("XOOPS_ROOT_PATH")) {
-	exit();
-}
-include_once dirname(dirname(__FILE__))."/include/vars.php";
-mod_loadFunctions("", $GLOBALS["moddirname"]);
+
+// defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
+include_once dirname(__DIR__) . '/include/vars.php';
+mod_loadFunctions('', $GLOBALS['moddirname']);
 
 /**
- * Bookmark 
- * 
- * @author D.J. (phppp)
- * @copyright copyright &copy; 2005 XoopsForge.com
- * @package module::article
+ * Bookmark
  *
- * {@link XoopsObject} 
+ * @author    D.J. (phppp)
+ * @copyright copyright &copy; 2005 XoopsForge.com
+ * @package   module::article
+ *
+ * {@link XoopsObject}
  **/
-if(!class_exists("Bookmark")):
+if (!class_exists('Bookmark')):
 
-class Bookmark extends ArtObject
+    /**
+     * Class Bookmark
+     */
+    class Bookmark extends XoopsObject
+    {
+        /**
+         * Constructor
+         */
+        public function __construct() {
+            //            $this->ArtObject();
+            $this->table = planet_DB_prefix('bookmark');
+            $this->initVar('bm_id', XOBJ_DTYPE_INT, null, false);
+            /* user ID */
+            $this->initVar('bm_uid', XOBJ_DTYPE_INT, 0, true);
+            /* blog ID */
+            $this->initVar('blog_id', XOBJ_DTYPE_INT, 0, true);
+        }
+    }
+endif;
+/**
+ * Topic object handler class.
+ * @package   module::article
+ *
+ * @author    D.J. (phppp)
+ * @copyright copyright &copy; 2005 XOOPS Project
+ *
+ * {@link XoopsPersistableObjectHandler}
+ *
+ * @param CLASS_PREFIX variable prefix for the class name
+ */
+
+planet_parse_class('
+class [CLASS_PREFIX]BookmarkHandler extends XoopsPersistableObjectHandler
 {
     /**
      * Constructor
-     */
-    function Bookmark()
-    {
-	    $this->ArtObject();
-        $this->table = planet_DB_prefix("bookmark");
-        $this->initVar("bm_id", XOBJ_DTYPE_INT, null, false);
-        /* user ID */
-        $this->initVar("bm_uid", XOBJ_DTYPE_INT, 0, true);
-        /* blog ID */
-        $this->initVar("blog_id", XOBJ_DTYPE_INT, 0, true);
+     *
+     * @param object $db reference to the {@link XoopsDatabase} object
+     **/
+    public function __construct(XoopsDatabase $db) {
+        parent::__construct($db, planet_DB_prefix("bookmark", true), "Bookmark", "bm_id");
     }
 }
-endif;
-/**
-* Topic object handler class.  
-* @package module::article
-*
-* @author  D.J. (phppp)
-* @copyright copyright &copy; 2005 The XOOPS Project
-*
-* {@link XoopsPersistableObjectHandler} 
-*
-* @param CLASS_PREFIX variable prefix for the class name
-*/
-
-planet_parse_class('
-class [CLASS_PREFIX]BookmarkHandler extends ArtObjectHandler
-{
-	/**
-	 * Constructor
-	 *
-	 * @param object $db reference to the {@link XoopsDatabase} object	 
-	 **/
-    function [CLASS_PREFIX]BookmarkHandler(&$db) {
-        $this->ArtObjectHandler($db, planet_DB_prefix("bookmark", true), "Bookmark", "bm_id");
-    }
-}
-'
-);
-?>
+');

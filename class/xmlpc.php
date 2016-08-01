@@ -1,5 +1,5 @@
 <?php
-// $Id$
+//
 // ------------------------------------------------------------------------ //
 // This program is free software; you can redistribute it and/or modify     //
 // it under the terms of the GNU General Public License as published by     //
@@ -25,83 +25,104 @@
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
 
-if (!defined('XOOPS_ROOT_PATH')){ exit(); }
-include_once dirname(dirname(__FILE__))."/include/vars.php";
-mod_loadFunctions("", $GLOBALS["moddirname"]);
+// defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
+include_once dirname(__DIR__) . '/include/vars.php';
+mod_loadFunctions('', $GLOBALS['moddirname']);
 
-if(!class_exists("Xmlrpc_client")){
-class Xmlrpc_client
-{
-    function Xmlrpc_client()
+if (!class_exists('Xmlrpc_client')) {
+    /**
+     * Class Xmlrpc_client
+     */
+    class Xmlrpc_client
     {
-    }
+        /**
+         * Xmlrpc_client constructor.
+         */
+        public function __construct() {
+        }
 
-    function setObject(&$article)
-    {
-        $this->$var = $val;
-    }
+        /**
+         * @param $article
+         */
+        public function setObject(&$article) {
+            $this->$var = $val;
+        }
 
-    function setVar($var, $val)
-    {
-        $this->$var = $val;
-    }
+        /**
+         * @param $var
+         * @param $val
+         */
+        public function setVar($var, $val) {
+            $this->$var = $val;
+        }
 
-    function getVar($var)
-    {
-        return $this->$var;
-    }
-}
-}
-
-
-if(!class_exists("Xmlrpc_server")){
-class Xmlrpc_server
-{
-
-    function Xmlrpc_server()
-    {
-    }
-
-    function setVar($var, $val)
-    {
-        $this->$var = $val;
-    }
-
-    function getVar($var)
-    {
-        return $this->$var;
+        /**
+         * @param $var
+         * @return mixed
+         */
+        public function getVar($var) {
+            return $this->$var;
+        }
     }
 }
+
+if (!class_exists('Xmlrpc_server')) {
+    /**
+     * Class Xmlrpc_server
+     */
+    class Xmlrpc_server
+    {
+        /**
+         * Xmlrpc_server constructor.
+         */
+        public function __construct() {
+        }
+
+        /**
+         * @param $var
+         * @param $val
+         */
+        public function setVar($var, $val) {
+            $this->$var = $val;
+        }
+
+        /**
+         * @param $var
+         * @return mixed
+         */
+        public function getVar($var) {
+            return $this->$var;
+        }
+    }
 }
 
 planet_parse_class('
 class [CLASS_PREFIX]XmlrpcHandler
 {
-    function &get($type="c")
+    public function &get($type="c")
     {
-		switch(strtolower($type)){
-			case "s":
-			case "server":
-			return new Xmlrpc_server();
-			case "c":
-			case "client":
-			return new Xmlrpc_client();
-		}
+        switch (strtolower($type)) {
+            case "s":
+            case "server":
+            return new Xmlrpc_server();
+            case "c":
+            case "client":
+            return new Xmlrpc_client();
+        }
     }
 
-    function display(&$feed, $filename="")
+    public function display(&$feed, $filename="")
     {
-	    if(!is_object($feed)) return null;
-	    $filename=empty($filename)?$feed->filename:$filename;
+        if(!is_object($feed)) return null;
+        $filename=empty($filename)?$feed->filename:$filename;
         echo $feed->saveFeed($feed->version, $filename);
     }
 
-    function utf8_encode(&$feed)
+    public function utf8_encode(&$feed)
     {
-	    if(!is_object($feed)) return null;
-		$text = xoops_utf8_encode(serialize($feed));
-		$feed = unserialize($text);
+        if(!is_object($feed)) return null;
+        $text = xoops_utf8_encode(serialize($feed));
+        $feed = unserialize($text);
     }
 }
 ');
-?>

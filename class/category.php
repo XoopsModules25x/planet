@@ -1,5 +1,5 @@
 <?php
-// $Id$
+//
 // ------------------------------------------------------------------------ //
 // This program is free software; you can redistribute it and/or modify     //
 // it under the terms of the GNU General Public License as published by     //
@@ -25,90 +25,90 @@
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
 /**
- * @package module::article
+ * @package   module::article
  * @copyright copyright &copy; 2005 XoopsForge.com
  */
- 
-if (!defined("XOOPS_ROOT_PATH")) {
-	exit();
-}
-include_once dirname(dirname(__FILE__))."/include/vars.php";
-mod_loadFunctions("", $GLOBALS["moddirname"]);
+
+// defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
+include_once dirname(__DIR__) . '/include/vars.php';
+mod_loadFunctions('', $GLOBALS['moddirname']);
 
 /**
- * Xcategory 
- * 
- * @author D.J. (phppp)
- * @copyright copyright &copy; 2005 XoopsForge.com
- * @package module::article
+ * Xcategory
  *
- * {@link XoopsObject} 
+ * @author    D.J. (phppp)
+ * @copyright copyright &copy; 2005 XoopsForge.com
+ * @package   module::article
+ *
+ * {@link XoopsObject}
  **/
-if(!class_exists("Bcategory")):
+if (!class_exists('Bcategory')):
 
-class Bcategory extends ArtObject
-{
     /**
-     * Constructor
+     * Class Bcategory
      */
-    function Bcategory()
+    class Bcategory extends XoopsObject
     {
-	    $this->ArtObject();
-        $this->table = planet_DB_prefix("category");
-        $this->initVar("cat_id", XOBJ_DTYPE_INT, null, false);
-        $this->initVar("cat_title", XOBJ_DTYPE_TXTBOX, "", true);
-        $this->initVar("cat_order", XOBJ_DTYPE_INT, 1, false);
+        /**
+         * Constructor
+         */
+        public function __construct() {
+            //            $this->ArtObject();
+            $this->table = planet_DB_prefix('category');
+            $this->initVar('cat_id', XOBJ_DTYPE_INT, null, false);
+            $this->initVar('cat_title', XOBJ_DTYPE_TXTBOX, '', true);
+            $this->initVar('cat_order', XOBJ_DTYPE_INT, 1, false);
+        }
     }
-}
 
 endif;
 /**
-* Category object handler class.  
-* @package module::article
-*
-* @author  D.J. (phppp)
-* @copyright copyright &copy; 2005 The XOOPS Project
-*
-* {@link XoopsPersistableObjectHandler} 
-*
-* @param CLASS_PREFIX variable prefix for the class name
-*/
+ * Category object handler class.
+ * @package   module::article
+ *
+ * @author    D.J. (phppp)
+ * @copyright copyright &copy; 2005 XOOPS Project
+ *
+ * {@link XoopsPersistableObjectHandler}
+ *
+ * @param CLASS_PREFIX variable prefix for the class name
+ */
 
 planet_parse_class('
-class [CLASS_PREFIX]CategoryHandler extends ArtObjectHandler
+class [CLASS_PREFIX]CategoryHandler extends XoopsPersistableObjectHandler
 {
-	/**
-	 * Constructor
-	 *
-	 * @param object $db reference to the {@link XoopsDatabase} object	 
-	 **/
-    function [CLASS_PREFIX]CategoryHandler(&$db) {
-        $this->ArtObjectHandler($db, planet_DB_prefix("category", true), "Bcategory", "cat_id", "cat_title");
+    /**
+     * Constructor
+     *
+     * @param object $db reference to the {@link XoopsDatabase} object
+     **/
+    public function __construct(XoopsDatabase $db) {
+        parent::__construct($db, planet_DB_prefix("category", true), "Bcategory", "cat_id", "cat_title");
     }
-    
-    function delete(&$category)
+
+    public function delete(XoopsObject $category, $force = false)
     {
         xoops_notification_deletebyitem($GLOBALS["xoopsModule"]->getVar("mid"), "category", $category->getVar("cat_id"));
-	    
-	    /* remove category-blog links */
+
+        /* remove category-blog links */
         $sql = "DELETE FROM ".planet_DB_prefix("blogcat")." WHERE cat_id = ".$category->getVar("cat_id");
         if (!$result = $this->db->queryF($sql)) {
         }
-        
-	    parent::delete($category, true);
+
+        parent::delete($category, true);
     }
-    
+
     /**
      * get a list of categories including a blog
-     * 
-     * @param 	object	$criteria 	{@link CriteriaElement} to match
-     * @param 	bool	$asObject 	flag indicating as object, otherwise as array
-     * @return 	array of categories {@link Bcategory}
+     *
+     * @param  object $criteria {@link CriteriaElement} to match
+     * @param  bool   $asObject flag indicating as object, otherwise as array
+     * @return array  of categories {@link Bcategory}
      */
-   	function &getByBlog($criteria = null, $asObject = false)
+       public function &getByBlog($criteria = null, $asObject = false)
     {
         $sql = "SELECT bc.cat_id".
-        		" FROM " . planet_DB_prefix("blogcat")." AS bc";
+                " FROM " . planet_DB_prefix("blogcat")." AS bc";
         $limit = null;
         $start = null;
         if (isset($criteria) && is_subclass_of($criteria, "criteriaelement")) {
@@ -126,62 +126,62 @@ class [CLASS_PREFIX]CategoryHandler extends ArtObjectHandler
         while ($myrow = $this->db->fetchArray($result)) {
             $ret[$myrow["cat_id"]] = 1;
         }
-        if(!empty($asObject)) {
-	        $crit = new Criteria("cat_id", "(".implode(",",array_keys($ret)).")", "IN");
-	        $ret =& $this->getObjects($crit);
+        if (!empty($asObject)) {
+            $crit = new Criteria("cat_id", "(".implode(",",array_keys($ret)).")", "IN");
+            $ret = $this->getObjects($crit);
         }
+
         return $ret;
     }
-    
+
     /**
      * get a list of blogs to a category
-     * 
-     * @param 	int		$category 	category ID
-     * @param 	array	$blogs 		array of blog IDs
-     * @return 	bool
+     *
+     * @param  int   $category category ID
+     * @param  array $blogs    array of blog IDs
+     * @return bool
      */
-   	function addBlogs($category, $blogs)
+       public function addBlogs($category, $blogs)
     {
-	    $_values = array();
-	    foreach($blogs as $blog){
-        	$sql = "SELECT COUNT(*)".
-        		" FROM ".planet_DB_prefix("blogcat").
-        		" WHERE cat_id=".intval($category)." AND blog_id=".intval($blog); 
-	        if (!$result = $this->db->query($sql)) {
-	            continue;
-	        }
-    		list($count) = $this->db->fetchRow($result);
-    		if($count>0) continue;
-		    $_values[] = "(".intval($blog).", ".intval($category).")";
+        $_values = array();
+        foreach ($blogs as $blog) {
+            $sql = "SELECT COUNT(*)".
+                " FROM ".planet_DB_prefix("blogcat").
+                " WHERE cat_id=".(int)($category)." AND blog_id=".(int)($blog);
+            if (!$result = $this->db->query($sql)) {
+                continue;
+            }
+            list($count) = $this->db->fetchRow($result);
+            if($count>0) continue;
+            $_values[] = "(".(int)($blog).", ".(int)($category).")";
         }
-		$values = implode(",",$_values);
+        $values = implode(",",$_values);
         $sql = "INSERT INTO ".planet_DB_prefix("blogcat")." (blog_id, cat_id) VALUES ". $values;
         if (!$result = $this->db->queryF($sql)) {
             planet_message("Insert blog-cat error:" . $sql);
+
             return false;
         }
-        
+
         return count($_values);
     }
     /**
      * remove a list of blogs from a category
-     * 
-     * @param 	int		$category 	category ID
-     * @param 	array	$blogs 		array of blog IDs
-     * @return 	bool
+     *
+     * @param  int   $category category ID
+     * @param  array $blogs    array of blog IDs
+     * @return bool
      */
-   	function removeBlogs($category, $blogs)
+       public function removeBlogs($category, $blogs)
     {
-	    if(count($blogs)>0){
-	        $sql = "DELETE FROM ".planet_DB_prefix("blogcat")." WHERE cat_id=".intval($category)." AND blog_id IN (".implode(",", $blogs).")";
-	        if (!$result = $this->db->queryF($sql)) {
-	            planet_message("remove blog-cat error:" . $sql);
-	        }
-  		}
-        
+        if (count($blogs)>0) {
+            $sql = "DELETE FROM ".planet_DB_prefix("blogcat")." WHERE cat_id=".(int)($category)." AND blog_id IN (".implode(",", $blogs).")";
+            if (!$result = $this->db->queryF($sql)) {
+                planet_message("remove blog-cat error:" . $sql);
+            }
+          }
+
         return count($blogs);
     }
 }
-'
-);
-?>
+');

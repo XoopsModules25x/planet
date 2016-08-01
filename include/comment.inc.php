@@ -1,5 +1,5 @@
 <?php
-// $Id$
+//
 // ------------------------------------------------------------------------ //
 // This program is free software; you can redistribute it and/or modify     //
 // it under the terms of the GNU General Public License as published by     //
@@ -25,37 +25,37 @@
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
 
-if (!defined("XOOPS_ROOT_PATH")){ exit(); }
+// defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
-include dirname(__FILE__)."/vars.php";
-mod_loadFunctions("", $GLOBALS["moddirname"]);
+include __DIR__ . '/vars.php';
+mod_loadFunctions('', $GLOBALS['moddirname']);
 
 planet_parse_function('
 function [VAR_PREFIX]_com_update($art_id, $count, $com_id)
 {
-	$article_handler =& xoops_getmodulehandler("article", $GLOBALS["moddirname"]);
-	$article_obj =& $article_handler->get($art_id);
-	if (!$article_handler->updateComments($article_obj, $count)) {
-		return false;
-	}
-	return true;
+    $article_handler = xoops_getModuleHandler("article", $GLOBALS["moddirname"]);
+    $article_obj = $article_handler->get($art_id);
+    if (!$article_handler->updateComments($article_obj, $count)) {
+        return false;
+    }
+
+    return true;
 }
 
 function [VAR_PREFIX]_com_approve(&$comment)
 {
-	planet_define_url_delimiter();
-	if (!empty($GLOBALS["xoopsModuleConfig"]["notification_enabled"])){
-		$article_handler =& xoops_getmodulehandler("article", $GLOBALS["moddirname"]);
-		$article_obj =& $article_handler->get($comment->getVar("com_itemid"));
-		$notification_handler =& xoops_gethandler("notification");
-		$tags = array();
-		$tags["ARTICLE_TITLE"] = $article_obj->getVar("art_title");
-		$tags["ARTICLE_URL"] = XOOPS_URL . "/modules/" . $GLOBALS["moddirname"] . "/view.article.php".URL_DELIMITER."" .$article_obj->getVar("art_id")."#comment".$comment->getVar("com_id");
-		$tags["ARTICLE_ACTION"] = planet_constant("MD_NOT_ACTION_COMMENT");
-		$notification_handler->triggerEvent("article", $article_obj->getVar("art_id"), "article_monitor", $tags);
-		$notification_handler->triggerEvent("global", 0, "article_monitor", $tags);
-		planet_com_trackback($article_obj, $comment);
-	}
+    planet_define_url_delimiter();
+    if (!empty($GLOBALS["xoopsModuleConfig"]["notification_enabled"])) {
+        $article_handler = xoops_getModuleHandler("article", $GLOBALS["moddirname"]);
+        $article_obj = $article_handler->get($comment->getVar("com_itemid"));
+        $notification_handler = xoops_getHandler("notification");
+        $tags = array();
+        $tags["ARTICLE_TITLE"] = $article_obj->getVar("art_title");
+        $tags["ARTICLE_URL"] = XOOPS_URL . "/modules/" . $GLOBALS["moddirname"] . "/view.article.php".URL_DELIMITER."" .$article_obj->getVar("art_id")."#comment".$comment->getVar("com_id");
+        $tags["ARTICLE_ACTION"] = planet_constant("MD_NOT_ACTION_COMMENT");
+        $notification_handler->triggerEvent("article", $article_obj->getVar("art_id"), "article_monitor", $tags);
+        $notification_handler->triggerEvent("global", 0, "article_monitor", $tags);
+        planet_com_trackback($article_obj, $comment);
+    }
 }
 ');
-?>
