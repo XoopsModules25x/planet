@@ -1,5 +1,5 @@
 <?php
-// $Id$
+//
 // ------------------------------------------------------------------------ //
 // This program is free software; you can redistribute it and/or modify     //
 // it under the terms of the GNU General Public License as published by     //
@@ -24,6 +24,5 @@
 // URL: http://xoops.org                         //
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
-include '../../mainfile.php';
-include XOOPS_ROOT_PATH.'/include/comment_reply.php';
-?>
+include dirname(dirname(__DIR__)) . '/mainfile.php';
+include XOOPS_ROOT_PATH . '/include/comment_reply.php';

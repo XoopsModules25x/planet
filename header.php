@@ -1,5 +1,5 @@
 <?php
-// $Id$
+//
 // ------------------------------------------------------------------------ //
 // This program is free software; you can redistribute it and/or modify     //
 // it under the terms of the GNU General Public License as published by     //
@@ -25,10 +25,9 @@
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
 
-include_once '../../mainfile.php';
-include XOOPS_ROOT_PATH."/modules/".$xoopsModule->getVar("dirname")."/include/vars.php";
-include_once XOOPS_ROOT_PATH."/modules/".$xoopsModule->getVar("dirname")."/include/functions.php";
+include dirname(dirname(__DIR__)) . '/mainfile.php';
+include XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->getVar('dirname') . '/include/vars.php';
+include_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->getVar('dirname') . '/include/functions.php';
 
 planet_define_url_delimiter();
-$myts =& MyTextSanitizer::getInstance();
-?>
+$myts = MyTextSanitizer::getInstance();

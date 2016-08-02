@@ -1,5 +1,5 @@
 <?php
-// $Id$
+//
 // ------------------------------------------------------------------------ //
 // This program is free software; you can redistribute it and/or modify     //
 // it under the terms of the GNU General Public License as published by     //
@@ -24,37 +24,37 @@
 // URL: http://xoops.org                         //
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
- 
-if(!defined("PLANET_INI")) define("PLANET_INI",1);
 
-/* 
+if (!defined('PLANET_INI')) {
+    define('PLANET_INI', 1);
+}
+
+/*
  * The prefix for database table name prefix
  * You can change to any term but be consistent with the table names in /sql/mysql.sql, and be unique , no conflict with other modules
  */
-$GLOBALS["MOD_DB_PREFIX"] = "planet";
+$GLOBALS['MOD_DB_PREFIX'] = 'planet';
 
 /* You are not supposed to modify following contents */
-defined("FRAMEWORKS_ART_FUNCTIONS_INI") || require_once(XOOPS_ROOT_PATH."/Frameworks/art/functions.ini.php");
-$GLOBALS["moddirname"] = mod_getDirname(__FILE__);
+defined('FRAMEWORKS_ART_FUNCTIONS_INI') || require_once XOOPS_ROOT_PATH . '/Frameworks/art/functions.ini.php';
+$GLOBALS['moddirname'] = mod_getDirname(__FILE__);
 
-/* 
+/*
  * The prefix for module variables
  * You can change to any term but be unique, no conflict with other modules
  */
-$GLOBALS["VAR_PREFIX"] = $GLOBALS["moddirname"];
+$GLOBALS['VAR_PREFIX'] = $GLOBALS['moddirname'];
 
-/* 
+/*
  * The prefix for module language constants
  * You can chnage to any term but be capital and unique, no conflict with other modules
  */
-$GLOBALS["VAR_PREFIXU"] = strtoupper($GLOBALS["moddirname"]);
-require_once(XOOPS_ROOT_PATH."/modules/".$GLOBALS["moddirname"]."/include/functions.ini.php");
-
+$GLOBALS['VAR_PREFIXU'] = strtoupper($GLOBALS['moddirname']);
+require_once XOOPS_ROOT_PATH . '/modules/' . $GLOBALS['moddirname'] . '/include/functions.ini.php';
 
 // include customized variables
-if( is_object($GLOBALS["xoopsModule"]) && $GLOBALS["moddirname"] == $GLOBALS["xoopsModule"]->getVar("dirname", "n") ) {
-	$GLOBALS["xoopsModuleConfig"] = planet_load_config();
+if (is_object($GLOBALS['xoopsModule']) && $GLOBALS['moddirname'] == $GLOBALS['xoopsModule']->getVar('dirname', 'n')) {
+    $GLOBALS['xoopsModuleConfig'] = planet_load_config();
 }
 
 planet_load_object();
-?>

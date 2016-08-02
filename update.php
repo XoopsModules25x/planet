@@ -1,5 +1,5 @@
 <?php
-// $Id$
+//
 // ------------------------------------------------------------------------ //
 // This program is free software; you can redistribute it and/or modify     //
 // it under the terms of the GNU General Public License as published by     //
@@ -25,31 +25,37 @@
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
 
-include "header.php";
+include __DIR__ . '/header.php';
 
-$blog_id = intval( !empty($_POST["blog"])?$_POST["blog"]:(!empty($_GET["blog"])?$_GET["blog"]:0) );
-$blog_handler =& xoops_getmodulehandler("blog", $GLOBALS["moddirname"]);
-if($blog_id>0){
-	$blog =& $blog_handler->get($blog_id);
-	$count = $blog_handler->do_update($blog);
-    redirect_header(XOOPS_URL."/modules/".$GLOBALS["moddirname"]."/index.php?blog=".$blog_id, 2, sprintf(planet_constant("MD_UPDATED"), intval($count)));
+$blog_id      = (int)(!empty($_POST['blog']) ? $_POST['blog'] : (!empty($_GET['blog']) ? $_GET['blog'] : 0));
+$blog_handler = xoops_getModuleHandler('blog', $GLOBALS['moddirname']);
+if ($blog_id > 0) {
+    $blog  =& $blog_handler->get($blog_id);
+    $count = $blog_handler->do_update($blog);
+    redirect_header(XOOPS_URL . '/modules/' . $GLOBALS['moddirname'] . '/index.php?blog=' . $blog_id, 2,
+                    sprintf(planet_constant('MD_UPDATED'), (int)$count));
 }
-if(planet_getcookie("upd")+30*60>time()) return;
-planet_setcookie("upd", time());
+if (planet_getcookie('upd') + 30 * 60 > time()) {
+    return;
+}
+planet_setcookie('upd', time());
 $start = 0;
-@include XOOPS_CACHE_PATH."/".$xoopsModule->getVar("dirname")."_update.php";
-$criteria = new Criteria("blog_status", 0, ">");
-$criteria->setSort("blog_id");
+@include XOOPS_CACHE_PATH . '/' . $xoopsModule->getVar('dirname') . '_update.php';
+$criteria = new Criteria('blog_status', 0, '>');
+$criteria->setSort('blog_id');
 $criteria->setStart($start);
-$criteria->setLimit($xoopsModuleConfig["blogs_perupdate"]);
-$blogs =& $blog_handler->getAll($criteria);
-foreach(array_keys($blogs) as $id){
-	$blog_handler->do_update($blogs[$id]);
+$criteria->setLimit($xoopsModuleConfig['blogs_perupdate']);
+$blogs = $blog_handler->getAll($criteria);
+foreach (array_keys($blogs) as $id) {
+    $blog_handler->do_update($blogs[$id]);
 }
 $start += count($blogs);
-if(count($blogs)<$xoopsModuleConfig["blogs_perupdate"]) $start = 0;
-$fp = fopen(XOOPS_CACHE_PATH."/".$xoopsModule->getVar("dirname")."_update.php", "w");
-if(!$fp) return;
-fputs($fp, "<?php\n	\$start=".intval($start).";\n?>");
+if (count($blogs) < $xoopsModuleConfig['blogs_perupdate']) {
+    $start = 0;
+}
+$fp = fopen(XOOPS_CACHE_PATH . '/' . $xoopsModule->getVar('dirname') . '_update.php', 'w');
+if (!$fp) {
+    return;
+}
+fwrite($fp, "<?php\n \$start=" . (int)$start . ";\n?>");
 fclose($fp);
-?>

@@ -1,5 +1,5 @@
 <?php
-// $Id$
+//
 // ------------------------------------------------------------------------ //
 // This program is free software; you can redistribute it and/or modify     //
 // it under the terms of the GNU General Public License as published by     //
@@ -25,21 +25,18 @@
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
 
-if (!defined('XOOPS_ROOT_PATH')){ exit(); }
 
+// defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
-defined("XOOPS_ROOT_PATH") or die("XOOPS root path not defined");
-
-$path = dirname(dirname(dirname(dirname(__FILE__))));
+$path = dirname(dirname(dirname(__DIR__)));
 include_once $path . '/mainfile.php';
 
-$dirname         = basename(dirname(dirname(__FILE__)));
-$module_handler  = xoops_gethandler('module');
-$module          = $module_handler->getByDirname($dirname);
+$dirname         = basename(dirname(__DIR__));
+$moduleHandler   = xoops_getHandler('module');
+$module          = $moduleHandler->getByDirname($dirname);
 $pathIcon32      = $module->getInfo('icons32');
 $pathModuleAdmin = $module->getInfo('dirmoduleadmin');
 $pathLanguage    = $path . $pathModuleAdmin;
-
 
 if (!file_exists($fileinc = $pathLanguage . '/language/' . $GLOBALS['xoopsConfig']['language'] . '/' . 'main.php')) {
     $fileinc = $pathLanguage . '/language/english/main.php';
@@ -47,33 +44,33 @@ if (!file_exists($fileinc = $pathLanguage . '/language/' . $GLOBALS['xoopsConfig
 
 include_once $fileinc;
 
-$adminmenu = array();
-$i=0;
-$adminmenu[$i]["title"] = _AM_MODULEADMIN_HOME;
-$adminmenu[$i]['link'] = "admin/index.php";
-$adminmenu[$i]["icon"]  = $pathIcon32 . '/home.png';
-$i++;
-$adminmenu[$i]['title'] = planet_constant("MI_ADMENU_INDEX");
-$adminmenu[$i]['link'] = "admin/main.php";
-$adminmenu[$i]["icon"]  = $pathIcon32 . '/manage.png';
+$adminmenu              = array();
+$i                      = 0;
+$adminmenu[$i]['title'] = _AM_MODULEADMIN_HOME;
+$adminmenu[$i]['link']  = 'admin/index.php';
+$adminmenu[$i]['icon']  = $pathIcon32 . '/home.png';
+++$i;
+$adminmenu[$i]['title'] = planet_constant('MI_ADMENU_INDEX');
+$adminmenu[$i]['link']  = 'admin/main.php';
+$adminmenu[$i]['icon']  = $pathIcon32 . '/manage.png';
 
-$i++;
-$adminmenu[$i]['title'] = planet_constant("MI_ADMENU_CATEGORY");
-$adminmenu[$i]['link'] = "admin/admin.category.php";
-$adminmenu[$i]["icon"]  = $pathIcon32 . '/category.png';
-$i++;
-$adminmenu[$i]['title'] = planet_constant("MI_ADMENU_BLOG");
-$adminmenu[$i]['link'] = "admin/admin.blog.php";
-$adminmenu[$i]["icon"]  = $pathIcon32 . '/translations.png';
-$i++;
-$adminmenu[$i]['title'] = planet_constant("MI_ADMENU_ARTICLE");
-$adminmenu[$i]['link'] = "admin/admin.article.php";
-$adminmenu[$i]["icon"]  = $pathIcon32 . '/content.png';
-//$i++;
+++$i;
+$adminmenu[$i]['title'] = planet_constant('MI_ADMENU_CATEGORY');
+$adminmenu[$i]['link']  = 'admin/admin.category.php';
+$adminmenu[$i]['icon']  = $pathIcon32 . '/category.png';
+++$i;
+$adminmenu[$i]['title'] = planet_constant('MI_ADMENU_BLOG');
+$adminmenu[$i]['link']  = 'admin/admin.blog.php';
+$adminmenu[$i]['icon']  = $pathIcon32 . '/translations.png';
+++$i;
+$adminmenu[$i]['title'] = planet_constant('MI_ADMENU_ARTICLE');
+$adminmenu[$i]['link']  = 'admin/admin.article.php';
+$adminmenu[$i]['icon']  = $pathIcon32 . '/content.png';
+//++$i;
 //$adminmenu[$i]['title'] = planet_constant("MI_ADMENU_BLOCK");
 //$adminmenu[$i]['link'] = "admin/admin.block.php";
 //$adminmenu[$i]["icon"]  = $pathIcon32 . '/manage.png';
-$i++;
+++$i;
 $adminmenu[$i]['title'] = _AM_MODULEADMIN_ABOUT;
-$adminmenu[$i]["link"]  = "admin/about.php";
-$adminmenu[$i]["icon"]  = $pathIcon32 . '/about.png';
+$adminmenu[$i]['link']  = 'admin/about.php';
+$adminmenu[$i]['icon']  = $pathIcon32 . '/about.png';

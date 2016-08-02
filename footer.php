@@ -1,5 +1,5 @@
 <?php
-// $Id$
+//
 // ------------------------------------------------------------------------ //
 // This program is free software; you can redistribute it and/or modify     //
 // it under the terms of the GNU General Public License as published by     //
@@ -25,5 +25,4 @@
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
 
-include_once XOOPS_ROOT_PATH."/footer.php";
-?>
+include_once XOOPS_ROOT_PATH . '/footer.php';

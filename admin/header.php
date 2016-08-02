@@ -1,5 +1,5 @@
 <?php
-// $Id$
+//
 // ------------------------------------------------------------------------ //
 // This program is free software; you can redistribute it and/or modify     //
 // it under the terms of the GNU General Public License as published by     //
@@ -25,16 +25,17 @@
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
 
-include("../../../include/cp_header.php");
-require XOOPS_ROOT_PATH."/modules/".$xoopsModule->getVar("dirname")."/include/vars.php";
-require_once(XOOPS_ROOT_PATH."/modules/".$xoopsModule->getVar("dirname")."/include/functions.php");
-include_once(XOOPS_ROOT_PATH."/Frameworks/art/functions.admin.php");
+include_once dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
+require XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->getVar('dirname') . '/include/vars.php';
+require_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->getVar('dirname') . '/include/functions.php';
+include_once XOOPS_ROOT_PATH . '/Frameworks/art/functions.admin.php';
 
 // include the default language file for the admin interface
-if(!@include_once(XOOPS_ROOT_PATH."/modules/".$xoopsModule->getVar("dirname")."/language/" . $xoopsConfig['language'] . "/main.php")){
-    include_once(XOOPS_ROOT_PATH."/modules/".$xoopsModule->getVar("dirname")."/language/english/main.php");
+if (!@include_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->getVar('dirname') . '/language/'
+                   . $xoopsConfig['language'] . '/main.php'
+) {
+    include_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->getVar('dirname') . '/language/english/main.php';
 }
 
 planet_define_url_delimiter();
-$myts =& MyTextSanitizer::getInstance();
-?>
+$myts = MyTextSanitizer::getInstance();

@@ -1,5 +1,5 @@
 <?php
-// $Id$
+//
 // ------------------------------------------------------------------------ //
 // This program is free software; you can redistribute it and/or modify     //
 // it under the terms of the GNU General Public License as published by     //
@@ -25,59 +25,60 @@
 // Project: Article Project                                                 //
 // ------------------------------------------------------------------------ //
 
-if (!defined('XOOPS_ROOT_PATH')){ exit(); }
+// defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
-include dirname(__FILE__)."/vars.php";
-mod_loadFunctions("", $GLOBALS["moddirname"]);
+include __DIR__ . '/vars.php';
+mod_loadFunctions('', $GLOBALS['moddirname']);
 
 planet_parse_function('
 function xoops_module_install_[DIRNAME](&$module)
 {
     @$GLOBALS["xoopsDB"]->queryFromFile(XOOPS_ROOT_PATH."/modules/".$GLOBALS["moddirname"]."/sql/mysql.data.sql");
-	return true;
+
+    return true;
 }
 
 function xoops_module_pre_install_[DIRNAME](&$module)
 {
-	$mod_tables = $module->getInfo("tables");
-	foreach($mod_tables as $table){
-		$GLOBALS["xoopsDB"]->queryF("DROP TABLE IF EXISTS ".$GLOBALS["xoopsDB"]->prefix($table).";");
-	}
-	return [DIRNAME]_setModuleConfig($module);
+    $mod_tables = $module->getInfo("tables");
+    foreach ($mod_tables as $table) {
+        $GLOBALS["xoopsDB"]->queryF("DROP TABLE IF EXISTS ".$GLOBALS["xoopsDB"]->prefix($table).";");
+    }
+
+    return [DIRNAME]_setModuleConfig($module);
 }
 
 function xoops_module_pre_update_[DIRNAME](&$module)
 {
-	return [DIRNAME]_setModuleConfig($module);
+    return [DIRNAME]_setModuleConfig($module);
 }
 
 function xoops_module_update_[DIRNAME](&$module)
 {
-	global $xoopsModule;
+    global $xoopsModule;
 
-	return true;
+    return true;
 }
 
 function [DIRNAME]_setModuleConfig(&$module)
 {
 
-	$modconfig =& $module->getInfo("config");
-	$count = count($modconfig);
-	$flag=0;
-	for($i=0;$i<$count;$i++){
-		if($modconfig[$i]["name"]=="theme_set"){
-			$modconfig[$i]["options"][_NONE] = "0";			
-		    foreach ($GLOBALS["xoopsConfig"]["theme_set_allowed"] as $theme) {
-				$modconfig[$i]["options"][$theme] = $theme;
-		    }
-			$flag ++;
-		}
-		if($flag>=1) {
-			break;
-		}
-	}
-	//$module->setInfo("config", $modconfig);
-	return true;	
+    $modconfig = $module->getInfo("config");
+    $count = count($modconfig);
+    $flag=0;
+    for ($i=0;$i<$count;++$i) {
+        if ($modconfig[$i]["name"]=="theme_set") {
+            $modconfig[$i]["options"][_NONE] = "0";
+            foreach ($GLOBALS["xoopsConfig"]["theme_set_allowed"] as $theme) {
+                $modconfig[$i]["options"][$theme] = $theme;
+            }
+            ++$flag ;
+        }
+        if ($flag>=1) {
+            break;
+        }
+    }
+    //$module->setInfo("config", $modconfig);
+    return true;
 }
 ');
-?>
