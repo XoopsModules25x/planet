@@ -45,7 +45,7 @@ if (!empty($xoopsModuleConfig['article_expire'])) {
     if (!empty($_GET['purge'])) {
         $crit = new CriteriaCompo($criteria);
         $crit->add(new Criteria('art_comments', 0));
-        $article_expires =& $article_handler->getObjects($criteria);
+        $article_expires = $article_handler->getObjects($criteria);
         foreach ($article_expires as $id => $article_obj) {
             $article_handler->delete($article_obj);
         }
